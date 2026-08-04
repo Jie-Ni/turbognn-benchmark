@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Jie-Ni/turbognn-benchmark/schemas/fold_result.schema.json",
+  "title": "TurboGNN lossless fold result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_key",
+    "condition",
+    "fold_index",
+    "gene_order",
+    "gene_order_hash",
+    "y_true",
+    "y_pred",
+    "y_true_delta",
+    "delta_pred",
+    "training_mean",
+    "training_mean_delta",
+    "control_profile",
+    "training_loss_by_epoch",
+    "metrics",
+    "metric_states",
+    "vector_states",
+    "metadata",
+    "vector_hashes"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "run_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "condition": {"type": "string", "minLength": 1},
+    "fold_index": {"type": "integer", "minimum": 0},
+    "gene_order": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "gene_order_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "y_true": {"$ref": "#/$defs/finiteVector"},
+    "y_pred": {"$ref": "#/$defs/finiteVector"},
+    "y_true_delta": {"$ref": "#/$defs/finiteVector"},
+    "delta_pred": {"$ref": "#/$defs/finiteVector"},
+    "training_mean": {"$ref": "#/$defs/finiteVector"},
+    "training_mean_delta": {"$ref": "#/$defs/finiteVector"},
+    "control_profile": {"$ref": "#/$defs/finiteVector"},
+    "training_loss_by_epoch": {"$ref": "#/$defs/finiteVector"},
+    "metrics": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": ["number", "null"]}
+    },
+    "metric_states": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "vector_states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["y_true_delta", "delta_pred"],
+      "properties": {
+        "y_true_delta": {"enum": ["valid", "constant_truth"]},
+        "delta_pred": {"enum": ["valid", "constant_prediction"]}
+      }
+    },
+    "metadata": {"type": "object"},
+    "vector_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "y_true",
+        "y_pred",
+        "y_true_delta",
+        "delta_pred",
+        "training_mean",
+        "training_mean_delta",
+        "control_profile"
+      ],
+      "properties": {
+        "y_true": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "y_pred": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "y_true_delta": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "delta_pred": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "training_mean": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "training_mean_delta": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_profile": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  },
+  "$defs": {
+    "finiteVector": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "number"}
+    }
+  }
+}

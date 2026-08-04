@@ -4,11 +4,12 @@
 Each original task (50 folds) is split into 5 chunks of 10 folds.
 Format: DATASET GRAPH_TYPE NUM_HVG SEED FOLD_START FOLD_END
 """
+
 from pathlib import Path
 
 REPLOGLE = ["replogle_k562", "replogle_rpe1"]
-ALL_GRAPHS = ["string_ppi", "gene_ontology", "coexpression", "combined", "random", "no_graph"]
-KEY_GRAPHS = ["string_ppi", "gene_ontology", "combined", "random", "no_graph"]
+ALL_GRAPHS = ["string_ppi", "gene_ontology", "coexpression", "string_go_union", "self_loop_gat"]
+KEY_GRAPHS = ["string_ppi", "gene_ontology", "string_go_union", "self_loop_gat"]
 SEEDS = [42, 43, 44]
 FOLDS_PER_CHUNK = 10
 TOTAL_FOLDS = 50

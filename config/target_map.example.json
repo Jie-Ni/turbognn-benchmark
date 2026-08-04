@@ -1,0 +1,90 @@
+{
+  "adamson": {
+    "evidence": "TODO: replace with the exact source metadata and curation record",
+    "canonicalization_evidence": "TODO: replace with the source-backed alias and identifier normalization record",
+    "allowed_perturbation_types": ["CRISPRi"],
+    "design_field_schema": {
+      "cell_context": {"type": "nfc_string", "source_value_policy": "retain_nfc_unmodified"}
+    },
+    "raw_conditions": {
+      "REPLACE_WITH_EXACT_RAW_CONDITION": {
+        "canonical_object": {
+          "target_ids": ["REPLACE_WITH_SORTED_STABLE_TARGET_ID"],
+          "target_identifier_namespace": "REPLACE_WITH_IDENTIFIER_NAMESPACE",
+          "target_identifier_release": "REPLACE_WITH_NAMESPACE_RELEASE",
+          "target_mapping_table_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "perturbation_type": "CRISPRi",
+          "design_fields": {"cell_context": "REPLACE_WITH_SOURCE_CELL_CONTEXT"}
+        },
+        "target_genes": ["REPLACE_WITH_EXACT_MATRIX_GENE_LABEL"],
+        "normalization_evidence": "TODO: replace with the exact raw-to-canonical normalization evidence"
+      }
+    }
+  },
+  "norman": {
+    "evidence": "TODO: replace with the exact source metadata and curation record",
+    "canonicalization_evidence": "TODO: replace with the source-backed alias and identifier normalization record",
+    "allowed_perturbation_types": ["CRISPRa"],
+    "design_field_schema": {
+      "cell_context": {"type": "nfc_string", "source_value_policy": "retain_nfc_unmodified"}
+    },
+    "raw_conditions": {
+      "REPLACE_WITH_EXACT_RAW_CONDITION": {
+        "canonical_object": {
+          "target_ids": ["REPLACE_WITH_SORTED_STABLE_TARGET_ID"],
+          "target_identifier_namespace": "REPLACE_WITH_IDENTIFIER_NAMESPACE",
+          "target_identifier_release": "REPLACE_WITH_NAMESPACE_RELEASE",
+          "target_mapping_table_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "perturbation_type": "CRISPRa",
+          "design_fields": {"cell_context": "REPLACE_WITH_SOURCE_CELL_CONTEXT"}
+        },
+        "target_genes": ["REPLACE_WITH_EXACT_MATRIX_GENE_LABEL"],
+        "normalization_evidence": "TODO: replace with the exact raw-to-canonical normalization evidence"
+      }
+    }
+  },
+  "replogle_k562": {
+    "evidence": "TODO: replace with the exact source metadata and curation record",
+    "canonicalization_evidence": "TODO: replace with the source-backed alias and identifier normalization record",
+    "allowed_perturbation_types": ["CRISPRi"],
+    "design_field_schema": {
+      "cell_context": {"type": "nfc_string", "source_value_policy": "retain_nfc_unmodified"}
+    },
+    "raw_conditions": {
+      "REPLACE_WITH_EXACT_RAW_CONDITION": {
+        "canonical_object": {
+          "target_ids": ["REPLACE_WITH_SORTED_STABLE_TARGET_ID"],
+          "target_identifier_namespace": "REPLACE_WITH_IDENTIFIER_NAMESPACE",
+          "target_identifier_release": "REPLACE_WITH_NAMESPACE_RELEASE",
+          "target_mapping_table_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "perturbation_type": "CRISPRi",
+          "design_fields": {"cell_context": "REPLACE_WITH_SOURCE_CELL_CONTEXT"}
+        },
+        "target_genes": ["REPLACE_WITH_EXACT_MATRIX_GENE_LABEL"],
+        "normalization_evidence": "TODO: replace with the exact raw-to-canonical normalization evidence"
+      }
+    }
+  },
+  "replogle_rpe1": {
+    "evidence": "TODO: replace with the exact source metadata and curation record",
+    "canonicalization_evidence": "TODO: replace with the source-backed alias and identifier normalization record",
+    "allowed_perturbation_types": ["CRISPRi"],
+    "design_field_schema": {
+      "cell_context": {"type": "nfc_string", "source_value_policy": "retain_nfc_unmodified"}
+    },
+    "raw_conditions": {
+      "REPLACE_WITH_EXACT_RAW_CONDITION": {
+        "canonical_object": {
+          "target_ids": ["REPLACE_WITH_SORTED_STABLE_TARGET_ID"],
+          "target_identifier_namespace": "REPLACE_WITH_IDENTIFIER_NAMESPACE",
+          "target_identifier_release": "REPLACE_WITH_NAMESPACE_RELEASE",
+          "target_mapping_table_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "perturbation_type": "CRISPRi",
+          "design_fields": {"cell_context": "REPLACE_WITH_SOURCE_CELL_CONTEXT"}
+        },
+        "target_genes": ["REPLACE_WITH_EXACT_MATRIX_GENE_LABEL"],
+        "normalization_evidence": "TODO: replace with the exact raw-to-canonical normalization evidence"
+      }
+    }
+  }
+}

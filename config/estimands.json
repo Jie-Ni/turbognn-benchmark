@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "primary": {
+    "treatment": "string_go_union",
+    "comparator": "self_loop_gat",
+    "metric": "pearson_r",
+    "fisher_clip_epsilon": 1e-7,
+    "required_training_seeds": [42, 43, 44],
+    "frozen_hvg_scales": [200, 500, 1000],
+    "datasets": ["norman", "adamson", "replogle_k562", "replogle_rpe1"],
+    "weighting": [
+      "training_seeds_equal_within_scale",
+      "scales_equal_within_condition",
+      "conditions_equal_within_dataset",
+      "datasets_equal"
+    ],
+    "reported_raw_effect": "tanh(mu_z_treatment)-tanh(mu_z_comparator)",
+    "bootstrap": {
+      "replicates": 10000,
+      "seed": 20260804,
+      "lower_percentile": 2.5,
+      "upper_percentile": 97.5,
+      "fixed_dataset_strata": true,
+      "resample_unit": "complete_condition_vector"
+    }
+  },
+  "empirical_resolution": {
+    "seed_pairs": [[42, 43], [42, 44], [43, 44]],
+    "seed_specific_effect": "for each seed, apply scale-condition-dataset hierarchy to both Fisher-z arm means, then tanh(mu_z_treatment)-tanh(mu_z_comparator)",
+    "single_run_conversion": "abs(hierarchical_delta_r_seed_a-hierarchical_delta_r_seed_b)/sqrt(2)",
+    "quantile": 0.95,
+    "quantile_method": "linear",
+    "reported_threshold": "one-sided bootstrap 95th percentile"
+  },
+  "g3": {
+    "contrast": "effect_at_hvg1000-effect_at_hvg200",
+    "support": "primary complete-case conditions only",
+    "bootstrap": {
+      "replicates": 10000,
+      "rng": "PCG64",
+      "seed": 20260811,
+      "fixed_dataset_strata": true,
+      "resample_unit": "condition",
+      "paired_scale_indices": [200, 1000]
+    }
+  },
+  "tds09": {
+    "condition_sign_flip": {
+      "draws": 100000,
+      "rng": "PCG64",
+      "seed": 20260804,
+      "p_value": "(1 + count(abs(draw) >= abs(observed))) / (draws + 1)"
+    },
+    "heterogeneity": {
+      "method": "within-dataset centered-residual bootstrap Q",
+      "draws": 10000,
+      "rng": "PCG64",
+      "seed": 20260805
+    }
+  },
+  "tds36": {
+    "repository": "mlbio-epfl/systema",
+    "commit": "aaf5b5353993b48b78543f2f93b3e18ca65df515",
+    "path": "evaluation/centroid_accuracy.py",
+    "git_blob_sha1": "d38a1ba6fe5e03441725479a668a9d99140587f4",
+    "raw_sha256": "dd82add60a9bcaf12d2705c58659e3393bff222d30dc0db3902dc9b0edc9e987",
+    "raw_bytes": 2894,
+    "distance": "euclidean",
+    "tie_policy": "strictly_greater_only",
+    "sign_flip_draws": 100000,
+    "sign_flip_rng": "PCG64",
+    "sign_flip_seed": 20260836,
+    "contrast_order": ["string_go_union", "string_ppi", "gene_ontology", "external_ascii"],
+    "families": {
+      "string_go_union": "unadjusted_primary_sensitivity",
+      "string_ppi_gene_ontology": "Holm",
+      "retained_external_models": "Holm"
+    }
+  }
+}

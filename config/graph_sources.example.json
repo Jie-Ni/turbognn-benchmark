@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "sources": {
+    "string_ppi": {
+      "edge_list": "REPLACE_STRING_PROJECTED_EDGES.tsv",
+      "edge_list_sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+      "release": "REPLACE_WITH_FROZEN_STRING_RELEASE",
+      "source_url": "REPLACE_WITH_EXACT_SOURCE_URL",
+      "construction_policy": "REPLACE_WITH_MAPPING_SCORE_AND_EDGE_POLICY"
+    },
+    "gene_ontology": {
+      "edge_list": "REPLACE_GO_PROJECTED_EDGES.tsv",
+      "edge_list_sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+      "release": "REPLACE_WITH_FROZEN_GOA_AND_ONTOLOGY_RELEASES",
+      "source_url": "REPLACE_WITH_EXACT_SOURCE_URLS",
+      "construction_policy": "REPLACE_WITH_BP_NOT_EVIDENCE_DEPTH_AND_GENERIC_TERM_POLICY"
+    }
+  }
+}

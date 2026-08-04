@@ -1,0 +1,19 @@
+# Observed local unit-test environment on 2026-08-04; not a canonical experiment lock.
+# Python 3.12.10; pip 25.0.1; Windows; CPU-only torch (CUDA runtime absent).
+# This capture has not been recreated from a fresh clone and has no artifact hashes.
+torch==2.11.0+cpu
+torch-geometric==2.7.0
+numpy==1.26.4
+scipy==1.17.1
+pandas==3.0.2
+networkx==2.8.8
+scikit-learn==1.8.0
+jsonschema==4.26.0
+statsmodels==0.14.6
+pytest==9.0.2
+black==26.5.1
+ruff==0.16.0
+
+# Absent from the captured environment: anndata, scanpy, torch-scatter,
+# torch-sparse, torch-cluster, and torch-spline-conv. Dataset and GPU execution
+# therefore remain unverified in this environment.

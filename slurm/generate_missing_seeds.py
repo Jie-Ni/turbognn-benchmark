@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 """Generate fold-split tasks for all missing seed-configs."""
+
 import json
+import re
 from pathlib import Path
 
 RESULTS_DIR = Path(__file__).parent.parent / "results_final"
 FOLDS_PER_CHUNK = 10
 TOTAL_FOLDS = 50
+SPLIT_TAG = re.compile(r"__(?:s\d+)?f\d+-\d+$")
 
 # Find what's missing
 missing = []
 for hvg in [200, 500, 1000]:
     d = RESULTS_DIR / f"hvg{hvg}"
     for jf in sorted(d.glob("*.json")):
-        if "__f" in jf.name or jf.name.startswith("results_") or jf.name == "summary.csv":
+        if SPLIT_TAG.search(jf.stem) or jf.name.startswith("results_"):
             continue
         with open(jf) as f:
             data = json.load(f)

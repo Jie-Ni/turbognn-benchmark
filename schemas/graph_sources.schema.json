@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["string_ppi", "gene_ontology"],
+      "properties": {
+        "string_ppi": {"$ref": "#/$defs/source"},
+        "gene_ontology": {"$ref": "#/$defs/source"}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "edge_list",
+        "edge_list_sha256",
+        "release",
+        "source_url",
+        "construction_policy"
+      ],
+      "properties": {
+        "edge_list": {"type": "string", "minLength": 1},
+        "edge_list_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "release": {"type": "string", "minLength": 1},
+        "source_url": {"type": "string", "minLength": 1},
+        "construction_policy": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

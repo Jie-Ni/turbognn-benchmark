@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "datasets": [
+    {
+      "dataset": "norman",
+      "relative_path": "processed/norman_mapped.h5ad",
+      "url": "https://zenodo.org/records/10044268/files/NormanWeissman2019_filtered.h5ad",
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256",
+      "size_bytes": "REPLACE_WITH_EXACT_BYTES",
+      "n_obs": "REPLACE_WITH_EXACT_N_OBS",
+      "n_vars": "REPLACE_WITH_EXACT_N_VARS",
+      "source_accession": "REPLACE_WITH_SOURCE_ACCESSION",
+      "source_version": "REPLACE_WITH_IMMUTABLE_VERSION",
+      "matrix_layer": "REPLACE_WITH_X_OR_layers_NAME",
+      "matrix_dtype": "REPLACE_WITH_EXACT_NUMPY_DTYPE",
+      "required_obs_fields": ["REPLACE_WITH_REQUIRED_OBS_FIELD"],
+      "required_var_fields": ["REPLACE_WITH_REQUIRED_VAR_FIELD"],
+      "perturbation_column": "REPLACE_WITH_VERIFIED_COLUMN",
+      "control_field": "REPLACE_WITH_VERIFIED_CONTROL_FIELD",
+      "control_value": "REPLACE_WITH_VERIFIED_CONTROL_VALUE",
+      "target_mapping_fields": ["REPLACE_WITH_TARGET_MAPPING_FIELD"],
+      "input_expression_state": "REPLACE_WITH_raw_counts_OR_log1p_normalized",
+      "minimum_perturbed_cells": 20,
+      "cell_qc_policy": "source_filtered_matrix_no_additional_cell_filter",
+      "condition_eligibility_ledger_sha256": "REPLACE_WITH_LEDGER_SHA256"
+    }
+  ]
+}

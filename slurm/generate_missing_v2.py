@@ -4,16 +4,25 @@ Generate tasks for ALL missing seed-fold chunks.
 Reads current merged JSONs to find which (dataset, graph, hvg, seed) combos
 have <50 folds, then generates 10-fold split tasks for the missing ones.
 """
+
 import json
-from pathlib import Path
+import re
 from collections import defaultdict
+from pathlib import Path
 
 RESULTS_DIR = Path(__file__).parent.parent / "results_final"
 FOLDS_PER_CHUNK = 10
 TOTAL_FOLDS = 50
+SPLIT_TAG = re.compile(r"__(?:s\d+)?f\d+-\d+$")
 
-ALL_GRAPHS_200 = ["string_ppi", "gene_ontology", "coexpression", "combined", "random", "no_graph"]
-KEY_GRAPHS = ["string_ppi", "gene_ontology", "combined", "random", "no_graph"]
+ALL_GRAPHS_200 = [
+    "string_ppi",
+    "gene_ontology",
+    "coexpression",
+    "string_go_union",
+    "self_loop_gat",
+]
+KEY_GRAPHS = ["string_ppi", "gene_ontology", "string_go_union", "self_loop_gat"]
 DATASETS = ["adamson", "norman", "replogle_k562", "replogle_rpe1"]
 SEEDS = [42, 43, 44]
 
@@ -38,7 +47,7 @@ for hvg in [200, 500, 1000]:
     if not d.exists():
         continue
     for jf in sorted(d.glob("*.json")):
-        if "__f" in jf.name or jf.name.startswith("results_") or jf.name == "summary.csv":
+        if SPLIT_TAG.search(jf.stem) or jf.name.startswith("results_"):
             continue
         with open(jf) as f:
             data = json.load(f)

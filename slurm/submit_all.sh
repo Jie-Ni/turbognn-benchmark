@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "LEGACY_NONCANONICAL: use generate_revision_tasks.py plus job_revision.sh" >&2
+exit 2
+
 # Submit Track A + Track B to SLURM on musica-inn
 # Full-node jobs: 4 tasks per node, array index = node index
 

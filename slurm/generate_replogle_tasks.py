@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 """Generate task files for Replogle-only experiments (long-running)."""
+
 from pathlib import Path
 
 REPLOGLE_DATASETS = ["replogle_k562", "replogle_rpe1"]
 
 ALL_GRAPHS = [
-    "string_ppi", "gene_ontology", "coexpression",
-    "combined", "random", "no_graph",
+    "string_ppi",
+    "gene_ontology",
+    "coexpression",
+    "string_go_union",
+    "self_loop_gat",
 ]
 
-KEY_GRAPHS = ["string_ppi", "gene_ontology", "combined", "random", "no_graph"]
+KEY_GRAPHS = ["string_ppi", "gene_ontology", "string_go_union", "self_loop_gat"]
 
 out_dir = Path(__file__).parent
 

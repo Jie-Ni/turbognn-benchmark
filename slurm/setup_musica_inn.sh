@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "LEGACY_NONCANONICAL: unpinned environment setup is disabled" >&2
+exit 2
+
 # One-shot setup script for musica-inn
 # Run on login node: bash setup_musica_inn.sh
 set -euo pipefail

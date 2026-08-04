@@ -1,0 +1,22 @@
+{
+  "adamson": {
+    "perturbation_column": "REPLACE_WITH_VERIFIED_COLUMN",
+    "control_label": "REPLACE_WITH_VERIFIED_LABEL",
+    "evidence": "TODO: cite the source record and exact metadata field"
+  },
+  "norman": {
+    "perturbation_column": "REPLACE_WITH_VERIFIED_COLUMN",
+    "control_label": "REPLACE_WITH_VERIFIED_LABEL",
+    "evidence": "TODO: cite the source record and exact metadata field"
+  },
+  "replogle_k562": {
+    "perturbation_column": "REPLACE_WITH_VERIFIED_COLUMN",
+    "control_label": "REPLACE_WITH_VERIFIED_LABEL",
+    "evidence": "TODO: cite the source record and exact metadata field"
+  },
+  "replogle_rpe1": {
+    "perturbation_column": "REPLACE_WITH_VERIFIED_COLUMN",
+    "control_label": "REPLACE_WITH_VERIFIED_LABEL",
+    "evidence": "TODO: cite the source record and exact metadata field"
+  }
+}

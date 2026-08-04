@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Jie-Ni/turbognn-benchmark/schemas/data_sources.schema.json",
+  "title": "Frozen H5AD dataset passports",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "datasets"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "datasets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/dataset"}
+    }
+  },
+  "$defs": {
+    "nonblank": {"type": "string", "minLength": 1, "pattern": "^(?!\\s)(?:.*\\S)?$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "uniqueNonblankStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonblank"}
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset",
+        "relative_path",
+        "url",
+        "sha256",
+        "size_bytes",
+        "n_obs",
+        "n_vars",
+        "source_accession",
+        "source_version",
+        "matrix_layer",
+        "matrix_dtype",
+        "required_obs_fields",
+        "required_var_fields",
+        "perturbation_column",
+        "control_field",
+        "control_value",
+        "target_mapping_fields",
+        "input_expression_state",
+        "minimum_perturbed_cells",
+        "cell_qc_policy",
+        "condition_eligibility_ledger_sha256"
+      ],
+      "properties": {
+        "dataset": {"$ref": "#/$defs/nonblank"},
+        "relative_path": {"$ref": "#/$defs/nonblank"},
+        "url": {"type": "string", "format": "uri"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "n_obs": {"type": "integer", "minimum": 1},
+        "n_vars": {"type": "integer", "minimum": 1},
+        "source_accession": {"$ref": "#/$defs/nonblank"},
+        "source_version": {"$ref": "#/$defs/nonblank"},
+        "matrix_layer": {"type": "string", "pattern": "^(?:X|layers/[^/]+)$"},
+        "matrix_dtype": {"$ref": "#/$defs/nonblank"},
+        "required_obs_fields": {"$ref": "#/$defs/uniqueNonblankStrings"},
+        "required_var_fields": {"$ref": "#/$defs/uniqueNonblankStrings"},
+        "perturbation_column": {"$ref": "#/$defs/nonblank"},
+        "control_field": {"$ref": "#/$defs/nonblank"},
+        "control_value": {"$ref": "#/$defs/nonblank"},
+        "target_mapping_fields": {"$ref": "#/$defs/uniqueNonblankStrings"},
+        "input_expression_state": {"enum": ["raw_counts", "log1p_normalized"]},
+        "minimum_perturbed_cells": {"const": 20},
+        "cell_qc_policy": {"const": "source_filtered_matrix_no_additional_cell_filter"},
+        "condition_eligibility_ledger_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Jie-Ni/turbognn-benchmark/schemas/model_tds42.schema.json",
+  "title": "Frozen TDS-42 model contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "precision", "deterministic_algorithms", "feature_encoder",
+    "gat", "transformer", "training", "runtime", "repair_policy"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "precision": {"const": "float32"},
+    "deterministic_algorithms": {"const": true},
+    "feature_encoder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gene_embedding_dim", "input_dim", "features", "projection",
+        "embedding_initialization", "embedding_max_norm", "embedding_norm_type",
+        "embedding_scale_grad_by_freq", "embedding_sparse", "projection_linear_bias",
+        "layer_norm_eps", "layer_norm_elementwise_affine", "layer_norm_bias", "elu_alpha"
+      ],
+      "properties": {
+        "gene_embedding_dim": {"type": "integer"}, "input_dim": {"type": "integer"},
+        "features": {"type": "array"}, "projection": {"type": "string"},
+        "embedding_initialization": {"type": "string"}, "embedding_max_norm": {"type": "null"},
+        "embedding_norm_type": {"type": "number"}, "embedding_scale_grad_by_freq": {"type": "boolean"},
+        "embedding_sparse": {"type": "boolean"}, "projection_linear_bias": {"type": "boolean"},
+        "layer_norm_eps": {"type": "number"}, "layer_norm_elementwise_affine": {"type": "boolean"},
+        "layer_norm_bias": {"type": "boolean"}, "elu_alpha": {"type": "number"}
+      }
+    },
+    "gat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hidden_dim", "layers", "heads", "concat", "add_self_loops",
+        "explicit_graph_self_loops", "batch_norm_each_layer", "activation",
+        "attention_coefficient_dropout", "dropout", "dropout_after_layers",
+        "linear_residual_into_layer", "decoder", "negative_slope", "bias", "residual",
+        "edge_dim", "fill_value", "aggregation", "flow", "node_dim", "decomposed_layers",
+        "batch_norm_eps", "batch_norm_momentum", "batch_norm_affine",
+        "batch_norm_track_running_stats", "residual_linear_bias", "decoder_linear_bias", "elu_alpha"
+      ],
+      "properties": {
+        "hidden_dim": {"type": "integer"}, "layers": {"type": "integer"},
+        "heads": {"type": "integer"}, "concat": {"type": "boolean"},
+        "add_self_loops": {"type": "boolean"}, "explicit_graph_self_loops": {"type": "boolean"},
+        "batch_norm_each_layer": {"type": "boolean"}, "activation": {"type": "string"},
+        "attention_coefficient_dropout": {"type": "number"}, "dropout": {"type": "number"},
+        "dropout_after_layers": {"type": "array"}, "linear_residual_into_layer": {"type": "integer"},
+        "decoder": {"type": "string"}, "negative_slope": {"type": "number"},
+        "bias": {"type": "boolean"}, "residual": {"type": "boolean"},
+        "edge_dim": {"type": "null"}, "fill_value": {"type": "string"},
+        "aggregation": {"type": "string"}, "flow": {"type": "string"},
+        "node_dim": {"type": "integer"}, "decomposed_layers": {"type": "integer"},
+        "batch_norm_eps": {"type": "number"}, "batch_norm_momentum": {"type": "number"},
+        "batch_norm_affine": {"type": "boolean"}, "batch_norm_track_running_stats": {"type": "boolean"},
+        "residual_linear_bias": {"type": "boolean"}, "decoder_linear_bias": {"type": "boolean"},
+        "elu_alpha": {"type": "number"}
+      }
+    },
+    "transformer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "d_model", "layers", "heads", "feedforward_dim", "pre_norm", "activation",
+        "dropout", "decoder", "bias", "batch_first", "layer_norm_eps", "encoder_norm",
+        "encoder_enable_nested_tensor", "encoder_mask_check", "decoder_linear_bias"
+      ],
+      "properties": {
+        "d_model": {"type": "integer"}, "layers": {"type": "integer"},
+        "heads": {"type": "integer"}, "feedforward_dim": {"type": "integer"},
+        "pre_norm": {"type": "boolean"}, "activation": {"type": "string"},
+        "dropout": {"type": "number"}, "decoder": {"type": "string"},
+        "bias": {"type": "boolean"}, "batch_first": {"type": "boolean"},
+        "layer_norm_eps": {"type": "number"}, "encoder_norm": {"type": "null"},
+        "encoder_enable_nested_tensor": {"type": "boolean"}, "encoder_mask_check": {"type": "boolean"},
+        "decoder_linear_bias": {"type": "boolean"}
+      }
+    },
+    "training": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "loss", "optimizer", "learning_rate", "weight_decay", "betas", "epsilon",
+        "adamw_amsgrad", "adamw_maximize", "adamw_foreach", "adamw_capturable",
+        "adamw_differentiable", "adamw_fused", "epochs", "condition_batch_size",
+        "parameter_initialization_seed_policy", "fold_order_seed_policy", "condition_order_policy",
+        "scheduler", "scheduler_t_max", "scheduler_eta_min", "gradient_l2_clip",
+        "gradient_clip_norm_type", "gradient_clip_error_if_nonfinite", "gradient_clip_foreach",
+        "early_stopping", "training_seeds"
+      ],
+      "properties": {
+        "loss": {"type": "string"}, "optimizer": {"type": "string"},
+        "learning_rate": {"type": "number"}, "weight_decay": {"type": "number"},
+        "betas": {"type": "array"}, "epsilon": {"type": "number"},
+        "adamw_amsgrad": {"type": "boolean"}, "adamw_maximize": {"type": "boolean"},
+        "adamw_foreach": {"type": "boolean"}, "adamw_capturable": {"type": "boolean"},
+        "adamw_differentiable": {"type": "boolean"}, "adamw_fused": {"type": "boolean"},
+        "epochs": {"type": "integer"}, "condition_batch_size": {"type": "integer"},
+        "parameter_initialization_seed_policy": {"type": "string"},
+        "fold_order_seed_policy": {"type": "string"}, "condition_order_policy": {"type": "string"},
+        "scheduler": {"type": "string"}, "scheduler_t_max": {"type": "integer"},
+        "scheduler_eta_min": {"type": "number"}, "gradient_l2_clip": {"type": "number"},
+        "gradient_clip_norm_type": {"type": "number"},
+        "gradient_clip_error_if_nonfinite": {"type": "boolean"},
+        "gradient_clip_foreach": {"type": "boolean"}, "early_stopping": {"type": "boolean"},
+        "training_seeds": {"type": "array"}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["torch_float32_matmul_precision", "cuda_matmul_allow_tf32", "cudnn_allow_tf32"],
+      "properties": {
+        "torch_float32_matmul_precision": {"type": "string"},
+        "cuda_matmul_allow_tf32": {"type": "boolean"},
+        "cudnn_allow_tf32": {"type": "boolean"}
+      }
+    },
+    "repair_policy": {"type": "string", "minLength": 1}
+  }
+}

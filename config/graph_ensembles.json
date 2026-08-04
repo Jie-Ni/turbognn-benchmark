@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "ensembles": [
+    {
+      "graph_type": "degree_preserving_rewired",
+      "instance_seeds": [101, 102, 103, 104, 105],
+      "swaps_per_edge": 10,
+      "max_attempts_per_rewirable_edge": 200,
+      "minimum_rewirable_edge_fraction": 0.90,
+      "maximum_rewirable_original_overlap": 0.20,
+      "algorithm": "component_preserving_canonical_double_edge_swap_v2",
+      "connectivity_policy": "preserve_original_component_node_sets_and_connectivity"
+    },
+    {
+      "graph_type": "barabasi_albert",
+      "instance_seeds": [201, 202, 203, 204, 205],
+      "algorithm": "networkx.barabasi_albert_graph",
+      "density_reference": "string_go_union_simple_undirected_without_self_loops",
+      "m_selection_policy": "argmin_(abs(m*(n-m)-E),m)_for_1_le_m_lt_n",
+      "node_mapping_policy": "ordered_gene_panel_index_0_to_n_minus_1",
+      "initial_graph_policy": "null_networkx_default_star_graph",
+      "self_loop_policy": "restore_one_self_loop_per_gene_after_generation",
+      "implementation_version_policy": "networkx_exact_version_from_environment_lock"
+    }
+  ]
+}
