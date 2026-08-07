@@ -1,0 +1,8 @@
+dataset,raw_label,n_cells,status
+Adamson,62(mod)_pBA581,2,verified_control
+Adamson,63(mod)_pBA580,6010,verified_control
+Adamson,Gal4-4(mod)_pBA582,1283,excluded_unresolved_control_like_label
+Adamson,*,101,excluded_unresolved_label
+Adamson,<missing>,2613,excluded_missing_annotation
+Norman,control,11855,verified_control
+Norman,<missing>,0,excluded_missing_annotation

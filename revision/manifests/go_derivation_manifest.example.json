@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "source_name": "Gene Ontology",
+  "source_release": "REPLACE_WITH_EXACT_GO_RELEASE",
+  "source_url": "REPLACE_WITH_EXACT_SOURCE_URL",
+  "edge_file_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "builder": {
+    "name": "REPLACE_WITH_BUILDER_NAME",
+    "version": "REPLACE_WITH_BUILDER_VERSION",
+    "code_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "input_files": {
+    "go_gaf": "REPLACE_WITH_64_HEX_SHA256",
+    "go_obo": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "identifier_mapping": {
+    "rule": "REPLACE_WITH_EXACT_IDENTIFIER_MAPPING_RULE",
+    "coverage": "REPLACE_WITH_FRACTION_FROM_0_TO_1"
+  },
+  "policy": {
+    "namespace": "biological_process",
+    "edge_rule": "shared_annotation",
+    "qualifier_policy": "REPLACE_WITH_EXACT_QUALIFIER_POLICY",
+    "evidence_code_policy": "REPLACE_WITH_EXACT_EVIDENCE_CODE_POLICY",
+    "ancestor_propagation_policy": "REPLACE_WITH_EXACT_ANCESTOR_POLICY",
+    "depth_policy": "REPLACE_WITH_EXACT_DEPTH_POLICY"
+  }
+}

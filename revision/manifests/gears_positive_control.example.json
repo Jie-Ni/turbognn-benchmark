@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "official_repository": {
+    "url": "https://github.com/snap-stanford/GEARS",
+    "commit": "f374e43e197b295016d80395d7a54ddb81cc6769"
+  },
+  "environment_lock": {
+    "source_id": "inputs/environment.lock",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "dataset": {
+    "name": "REPLACE_WITH_DATASET_NAME",
+    "source_id": "inputs/dataset.h5ad",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "split": {
+    "name": "simulation",
+    "seed": 1
+  },
+  "training_config": {
+    "REPLACE_WITH_EVERY_EXECUTED_PARAMETER": "REPLACE_WITH_VALUE"
+  },
+  "official_metric_source": {
+    "source_id": "inputs/official_metric_source.py",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256",
+    "function": "gears.inference.compute_metrics",
+    "repository_source_id": "gears/inference.py"
+  },
+  "execution_plan": {
+    "source_id": "inputs/execution_plan.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_execution_audit": {
+    "source_id": "official_reference_execution_audit.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_execution_audit": {
+    "source_id": "candidate_execution_audit.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_raw_evidence": {
+    "source_id": "official_reference_raw_evidence.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_raw_evidence": {
+    "source_id": "candidate_raw_evidence.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_entrypoint": {
+    "source_id": "inputs/official_reference_entrypoint.py",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_entrypoint": {
+    "source_id": "inputs/candidate_entrypoint.py",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_expected_value_provenance": {
+    "source_id": "inputs/official_reference_expected_value_provenance.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_expected_value_provenance": {
+    "source_id": "inputs/candidate_expected_value_provenance.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_initialization_state": {
+    "source_id": "official_reference_initialization_state.npz",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_checkpoint_state": {
+    "source_id": "official_reference_checkpoint_state.npz",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_graph_state": {
+    "source_id": "official_reference_graph_state.npz",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_initialization_state": {
+    "source_id": "candidate_initialization_state.npz",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_checkpoint_state": {
+    "source_id": "candidate_checkpoint_state.npz",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_graph_state": {
+    "source_id": "candidate_graph_state.npz",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "official_reference_output": {
+    "source_id": "official_reference_output.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "candidate_output": {
+    "source_id": "candidate_output.json",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "expected_metrics": {
+    "mse": 0.0,
+    "mse_de": 0.0,
+    "pearson": 0.0,
+    "pearson_de": 0.0
+  },
+  "tolerances": {
+    "mse": {
+      "absolute": 0.0,
+      "relative": 0.0,
+      "justification": "REPLACE_WITH_PREDECLARED_NUMERICAL_JUSTIFICATION"
+    },
+    "mse_de": {
+      "absolute": 0.0,
+      "relative": 0.0,
+      "justification": "REPLACE_WITH_PREDECLARED_NUMERICAL_JUSTIFICATION"
+    },
+    "pearson": {
+      "absolute": 0.0,
+      "relative": 0.0,
+      "justification": "REPLACE_WITH_PREDECLARED_NUMERICAL_JUSTIFICATION"
+    },
+    "pearson_de": {
+      "absolute": 0.0,
+      "relative": 0.0,
+      "justification": "REPLACE_WITH_PREDECLARED_NUMERICAL_JUSTIFICATION"
+    }
+  },
+  "metric_directions": {
+    "mse": "lower_is_better",
+    "mse_de": "lower_is_better",
+    "pearson": "higher_is_better",
+    "pearson_de": "higher_is_better"
+  },
+  "execution_plan_hash": "REPLACE_WITH_64_HEX_SHA256",
+  "manifest_hash": "REPLACE_WITH_CANONICAL_MANIFEST_HASH"
+}

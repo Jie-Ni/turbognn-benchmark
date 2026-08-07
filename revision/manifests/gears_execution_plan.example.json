@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "official_repository": {
+    "url": "https://github.com/snap-stanford/GEARS",
+    "commit": "f374e43e197b295016d80395d7a54ddb81cc6769"
+  },
+  "environment_lock": {
+    "source_id": "REPLACE_WITH_RELATIVE_GEARS_ENVIRONMENT_LOCK",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "dataset": {
+    "name": "REPLACE_WITH_POSITIVE_CONTROL_DATASET_NAME",
+    "source_id": "REPLACE_WITH_RELATIVE_H5AD_FILE",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "split": {
+    "name": "simulation",
+    "seed": 1
+  },
+  "training_config": {
+    "batch_size": 32,
+    "test_batch_size": 128,
+    "epochs": 20,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0005,
+    "hidden_size": 64,
+    "num_go_gnn_layers": 1,
+    "num_gene_gnn_layers": 1,
+    "decoder_hidden_size": 16,
+    "num_similar_genes_go_graph": 20,
+    "num_similar_genes_co_express_graph": 20,
+    "coexpress_threshold": 0.4,
+    "direction_lambda": 0.1,
+    "uncertainty": false,
+    "device": "REPLACE_WITH_EXPLICIT_DEVICE"
+  },
+  "official_metric_source": {
+    "source_id": "gears/inference.py",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256_AT_PINNED_COMMIT",
+    "function": "gears.inference.compute_metrics"
+  },
+  "expected_metrics": {
+    "mse": "REPLACE_WITH_PREDECLARED_OFFICIAL_REFERENCE_VALUE",
+    "mse_de": "REPLACE_WITH_PREDECLARED_OFFICIAL_REFERENCE_VALUE",
+    "pearson": "REPLACE_WITH_PREDECLARED_OFFICIAL_REFERENCE_VALUE",
+    "pearson_de": "REPLACE_WITH_PREDECLARED_OFFICIAL_REFERENCE_VALUE"
+  },
+  "tolerances": {
+    "mse": {
+      "absolute": "REPLACE_WITH_PREDECLARED_ABSOLUTE_TOLERANCE",
+      "relative": "REPLACE_WITH_PREDECLARED_RELATIVE_TOLERANCE",
+      "justification": "REPLACE_WITH_NUMERICAL_JUSTIFICATION"
+    },
+    "mse_de": {
+      "absolute": "REPLACE_WITH_PREDECLARED_ABSOLUTE_TOLERANCE",
+      "relative": "REPLACE_WITH_PREDECLARED_RELATIVE_TOLERANCE",
+      "justification": "REPLACE_WITH_NUMERICAL_JUSTIFICATION"
+    },
+    "pearson": {
+      "absolute": "REPLACE_WITH_PREDECLARED_ABSOLUTE_TOLERANCE",
+      "relative": "REPLACE_WITH_PREDECLARED_RELATIVE_TOLERANCE",
+      "justification": "REPLACE_WITH_NUMERICAL_JUSTIFICATION"
+    },
+    "pearson_de": {
+      "absolute": "REPLACE_WITH_PREDECLARED_ABSOLUTE_TOLERANCE",
+      "relative": "REPLACE_WITH_PREDECLARED_RELATIVE_TOLERANCE",
+      "justification": "REPLACE_WITH_NUMERICAL_JUSTIFICATION"
+    }
+  },
+  "metric_directions": {
+    "mse": "lower_is_better",
+    "mse_de": "lower_is_better",
+    "pearson": "higher_is_better",
+    "pearson_de": "higher_is_better"
+  },
+  "execution": {
+    "official_reference": {
+      "phase_role": "official_reference",
+      "workflow_reuse_policy": "PINNED_OFFICIAL_WORKFLOW_REUSE_ALLOWED",
+      "expected_value_provenance": {
+        "source_id": "official_reference_expected_value_provenance.example.json",
+        "sha256": "REPLACE_WITH_64_HEX_SHA256"
+      },
+      "entrypoint": {
+        "scope": "plan",
+        "source_id": "run_gears_positive_control.py",
+        "sha256": "REPLACE_WITH_ADAPTER_64_HEX_SHA256"
+      },
+      "argv": [
+        "{python}", "{entrypoint}", "--repository-root", "{repository_root}",
+        "--dataset", "{dataset}", "--output", "{output}",
+        "--work-dir", "{output}.work", "--dataset-name",
+        "REPLACE_WITH_POSITIVE_CONTROL_DATASET_NAME", "--split", "simulation",
+        "--seed", "1", "--device", "REPLACE_WITH_EXPLICIT_DEVICE",
+        "--batch-size", "32", "--test-batch-size", "128", "--epochs", "20",
+        "--learning-rate", "0.001", "--weight-decay", "0.0005",
+        "--hidden-size", "64", "--num-go-gnn-layers", "1",
+        "--num-gene-gnn-layers", "1", "--decoder-hidden-size", "16",
+        "--num-similar-genes-go-graph", "20",
+        "--num-similar-genes-co-express-graph", "20",
+        "--coexpress-threshold", "0.4", "--direction-lambda", "0.1"
+      ]
+    },
+    "candidate": {
+      "phase_role": "heldout_adaptation",
+      "workflow_reuse_policy": "PINNED_OFFICIAL_WORKFLOW_REUSE_ALLOWED",
+      "expected_value_provenance": {
+        "source_id": "candidate_expected_value_provenance.example.json",
+        "sha256": "REPLACE_WITH_64_HEX_SHA256"
+      },
+      "entrypoint": {
+        "scope": "plan",
+        "source_id": "run_gears_positive_control.py",
+        "sha256": "REPLACE_WITH_ADAPTER_64_HEX_SHA256"
+      },
+      "argv": [
+        "{python}", "{entrypoint}", "--repository-root", "{repository_root}",
+        "--dataset", "{dataset}", "--output", "{output}",
+        "--work-dir", "{output}.work", "--dataset-name",
+        "REPLACE_WITH_POSITIVE_CONTROL_DATASET_NAME", "--split", "simulation",
+        "--seed", "1", "--device", "REPLACE_WITH_EXPLICIT_DEVICE",
+        "--batch-size", "32", "--test-batch-size", "128", "--epochs", "20",
+        "--learning-rate", "0.001", "--weight-decay", "0.0005",
+        "--hidden-size", "64", "--num-go-gnn-layers", "1",
+        "--num-gene-gnn-layers", "1", "--decoder-hidden-size", "16",
+        "--num-similar-genes-go-graph", "20",
+        "--num-similar-genes-co-express-graph", "20",
+        "--coexpress-threshold", "0.4", "--direction-lambda", "0.1"
+      ]
+    }
+  },
+  "plan_hash": "REPLACE_WITH_CANONICAL_PLAN_HASH"
+}

@@ -1,0 +1,3 @@
+dataset,condition_column,verified_control_labels,verified_control_cells,control_evidence,endpoint_exclusions,exclusion_reason,legacy_fallback_result,n_obs,n_vars
+Adamson,perturbation,62(mod)_pBA581|63(mod)_pBA580,6012,source-rebuild notebook strips the vector suffix and maps both 62(mod) and 63(mod) to control; repository commit 41f70980b481b9c854772cd8b8c5a4753c1c3eac,Gal4-4(mod)_pBA582|*|missing perturbation annotation,not verified as a human-gene perturbation endpoint; missing annotations are ineligible,63(mod)_pBA580 selected only because it was modal,65337,32738
+Norman,perturbation,control,11855,explicit source-H5AD perturbation category,,,explicit control label recognised,111445,33694

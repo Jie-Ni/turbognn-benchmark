@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "dataset": "REPLACE_WITH_PROTOCOL_DATASET_NAME",
+  "accession": "REPLACE_WITH_ARCHIVE_ACCESSION",
+  "data_file_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "expression_source": {
+    "container": "REPLACE_WITH_ONE_OF_X_LAYER_RAW",
+    "layer_key": "REQUIRED_ONLY_WHEN_CONTAINER_IS_LAYER",
+    "declared_scale": "counts",
+    "integer_tolerance": 1e-6
+  },
+  "matrix_schema": {
+    "n_cells": 1,
+    "n_genes": 1,
+    "condition_column": "REPLACE_WITH_EXACT_OBS_COLUMN",
+    "gene_identifier_space": "REPLACE_WITH_VAR_NAMES_IDENTIFIER_SPACE",
+    "gene_order_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "condition_mapping": {
+    "REPLACE_WITH_VERIFIED_RAW_CONTROL_LABEL": "control"
+  },
+  "target_mapping": {},
+  "condition_cell_counts": {
+    "REPLACE_WITH_VERIFIED_RAW_CONTROL_LABEL": 1
+  },
+  "canonical_condition_cell_counts": {
+    "control": 1
+  },
+  "control_evidence": {
+    "condition_column": "REPLACE_WITH_EXACT_OBS_COLUMN",
+    "raw_labels": [
+      "REPLACE_WITH_VERIFIED_RAW_CONTROL_LABEL"
+    ],
+    "raw_label_counts": {
+      "REPLACE_WITH_VERIFIED_RAW_CONTROL_LABEL": 1
+    },
+    "evidence_source_id": "REPLACE_WITH_ARCHIVED_SOURCE_URL_OR_CITATION",
+    "evidence_locator": "REPLACE_WITH_PAGE_TABLE_FIELD_OR_CODE_LOCATION",
+    "evidence_file": "REPLACE_WITH_PASSPORT_RELATIVE_EVIDENCE_FILE",
+    "evidence_file_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "attrition": {
+    "raw_condition_count": 1,
+    "canonical_condition_count": 1,
+    "excluded_raw_conditions": {},
+    "excluded_raw_condition_count": 0,
+    "retained_target_mapped_condition_count": 0,
+    "raw_cell_count": 1,
+    "control_cell_count": 1,
+    "excluded_cell_count": 0,
+    "retained_target_mapped_cell_count": 0
+  },
+  "legacy_first50_panel": {
+    "ordered_condition_ids": [
+      "REPLACE_WITH_EXACTLY_50_ORDERED_LEGACY_CONDITION_IDS"
+    ],
+    "evidence_source_id": "REPLACE_WITH_ARCHIVED_SOURCE_URL_OR_CITATION",
+    "evidence_locator": "REPLACE_WITH_PAGE_TABLE_FIELD_OR_CODE_LOCATION",
+    "evidence_file": "REPLACE_WITH_PASSPORT_RELATIVE_EVIDENCE_FILE",
+    "evidence_file_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  }
+}

@@ -1,0 +1,819 @@
+schema_version: "1.0"
+protocol_id: cbac-major-revision-string-go-primary-v2
+status: frozen_design_requires_compute_approval
+
+datasets:
+  adamson:
+    cell_line: K562
+    dataset_aliases: [Adamson, Adamson_2016]
+    data_file: scperturb/adamson.h5ad
+    condition_column: perturbation
+    production_condition_column_source: hash_verified_dataset_passport_control_evidence
+    control:
+      canonical_label: control
+      aliases: [ctrl, non-targeting, non_targeting, nt, "62(mod)_pBA581", "63(mod)_pBA580"]
+      case_sensitive: false
+      evidence:
+        repository: populated_by_dataset_passport_required
+        commit: 41f70980b481b9c854772cd8b8c5a4753c1c3eac
+        source_file: build_adamson_2016_anndata_upr.ipynb
+        source_locator: cell_16_condition_derivation_and_control_mapping
+        mapped_source_labels: ["62(mod)", "63(mod)"]
+        exact_archived_labels: ["62(mod)_pBA581", "63(mod)_pBA580"]
+        modal_or_frequency_fallback_allowed: false
+    condition_aliases: {}
+    gene_aliases: {}
+    condition_targets: {}
+    target_separator_pattern: "[+,;|]"
+    condition_target_regex_pattern: "^(?P<target>.+)_(?:pDS|pBA)[0-9]+$"
+    condition_target_regex_group: target
+    target_equivalent_label_policy: preserve_guide_level_conditions
+    excluded_endpoint_conditions:
+      "Gal4-4(mod)_pBA582": NON_GENE_CONSTRUCT_ENDPOINT_EXCLUDED
+      "*": UNRESOLVED_ARCHIVE_LABEL_ENDPOINT_EXCLUDED
+      "__MISSING_CONDITION__": MISSING_ARCHIVE_CONDITION_ENDPOINT_EXCLUDED
+    dataset_passport: required_for_production_h5ad
+  norman:
+    cell_line: K562
+    dataset_aliases: [Norman, Norman_2019]
+    data_file: processed/norman_mapped.h5ad
+    condition_column: perturbation
+    production_condition_column_source: hash_verified_dataset_passport_control_evidence
+    control:
+      canonical_label: control
+      aliases: [ctrl, non-targeting, non_targeting, nt]
+      case_sensitive: false
+    condition_aliases: {}
+    gene_aliases: {}
+    condition_targets: {}
+    target_separator_pattern: "[_+,;|]"
+    unordered_multi_target_canonicalization: true
+    ignored_target_tokens: [ctrl]
+    target_equivalent_label_policy: pool_cells_before_panel_selection
+    dataset_passport: required_for_production_h5ad
+  replogle_k562:
+    cell_line: K562
+    dataset_aliases: [Replogle_K562, Replogle_2022_K562]
+    data_file: scperturb/replogle_k562.h5ad
+    condition_column: DATASET_PASSPORT_REQUIRED
+    production_condition_column_source: hash_verified_dataset_passport_control_evidence
+    control:
+      canonical_label: control
+      aliases: [ctrl, non-targeting, non_targeting, nt]
+      case_sensitive: false
+    condition_aliases: {}
+    gene_aliases: {}
+    condition_targets: {}
+    target_separator_pattern: "[+,;|]"
+    dataset_passport: required_for_production_h5ad
+  replogle_rpe1:
+    cell_line: RPE1
+    dataset_aliases: [Replogle_RPE1, Replogle_2022_RPE1]
+    data_file: scperturb/replogle_rpe1.h5ad
+    condition_column: DATASET_PASSPORT_REQUIRED
+    production_condition_column_source: hash_verified_dataset_passport_control_evidence
+    control:
+      canonical_label: control
+      aliases: [ctrl, non-targeting, non_targeting, nt]
+      case_sensitive: false
+    condition_aliases: {}
+    gene_aliases: {}
+    condition_targets: {}
+    target_separator_pattern: "[+,;|]"
+    dataset_passport: required_for_production_h5ad
+
+condition_panel:
+  primary_size: 50
+  sensitivity_size: 50
+  non_overlap_required: true
+  legacy_first50_exclusion:
+    source: hash_verified_dataset_passport
+    primary_overlap_allowed: false
+    primary_shortfall_policy: PREFLIGHT_BLOCK
+    conditional_overlap_allowed_with_legacy_or_primary: false
+    triggered_conditional_shortfall_policy: WITHHELD
+  selection_seed: 20260806
+  required_metadata_strata: [condition_cell_count_quartile, perturbation_order]
+  descriptive_metadata_columns: [perturbation_class, pathway_class]
+  missing_optional_metadata_label: __NOT_AVAILABLE__
+  allocation: minimum_one_per_nonempty_stratum_when_capacity_then_proportional_deficit
+  representativeness_outputs:
+    - categorical_universe_and_panel_counts_proportions_absolute_differences_and_variable_tv
+    - numeric_universe_and_panel_n_mean_sd_median_iqr_and_standardized_mean_difference
+    - optional_metadata_explicit_not_available_rows
+    - target_mapping_coverage_raw_mapped_excluded_counts_and_reason_codes
+    - condition_and_cell_coverage
+  conditional_sensitivity_trigger:
+    combined_selection_stratum_total_variation_distance_gt: 0.10
+    absolute_standardized_log1p_condition_cell_count_difference_gt: 0.25
+    execution_arms_if_triggered: [string_go, dense]
+
+target_encoding:
+  input: binary_gene_indicator_channel
+  case_sensitive: false
+  multi_target_separator_pattern: "[+,;|]"
+  multi_target_allowed: true
+  zero_target_indicator_allowed: false
+  missing_target_policy: reason_coded_failure
+  unordered_multi_target_canonicalization: true
+
+preprocessing:
+  input_scale: counts
+  per_cell_transform: library_size_10000_then_log1p
+  target_library_size: 10000
+  fit_scope: control_only
+  hvg_method: control_variance
+  hvg_scales: [200, 500, 1000]
+  nested_gene_panels_required: true
+  nested_gene_panel_order: 200_subset_500_subset_1000
+  scale_evaluation_spaces: [native_hvg, common_200_gene]
+  primary_hvg_scale: 200
+  scaling_center: control_only_mean
+  scaling_scale: control_only_sample_standard_deviation
+  zero_variance_scale: 1.0
+  held_out_condition_used_for_fit: false
+  forced_target_retention_scope: selected_panel_only
+
+graph_supports:
+  modes: [dense, self_loop, curated, degree_preserving_rewire]
+  fixed_architecture_across_modes: true
+  explicit_self_loops: true
+  implicit_gat_self_loops: false
+  primary_sparse_support_arm: string_go
+  mixed_support_sensitivity_arm: combined
+  curated_arms: [string_go]
+  dense_arm: dense
+  self_loop_arm: self_loop
+  topology_null:
+    source_arm: string_go
+    arm_prefix: string_go_rewire_
+    method: undirected_double_edge_swap
+    degree_sequence_preserved_exactly: true
+    connected_component_count_preserved_exactly: true
+    connected_component_membership_preserved_exactly: true
+    isolate_count_preserved_exactly: true
+    small_nonrewirable_components: retain_unchanged_and_report_swapped_edge_fraction
+    minimum_swapped_edge_fraction: 0.80
+    unique_support_hashes_required: true
+    rewire_multiplier: 10.0
+    replicate_seeds: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010]
+  prohibited_null: mean_degree_matched_barabasi_albert
+  legacy_internal_identifier_meanings:
+    curated: generic_supplied_sparse_support_not_expert_curation
+    string_ppi: legacy_internal_identifier_for_STRING_combined_score_functional_association_not_physical_PPI
+
+graph_composition:
+  representation: simple_undirected_gene_graph
+  duplicate_edges: collapse
+  self_edges_in_source: discard_then_add_explicitly_for_every_arm
+  string_ppi:
+    source: STRING_v12.0
+    species_taxon: 9606
+    combined_score_rule: exclusive_gt_400
+    derivation_manifest: required_and_hash_verified
+    required_local_inputs: [string_raw, string_identifier_map]
+    identifier_mapping_policy: explicit_hash_verified_exact_map
+    evidence_scope: functional_association_not_physical_ppi
+  gene_ontology:
+    source: GOA_human_GAF_plus_GO_OBO
+    release: populated_by_preflight_required
+    required_local_inputs: [go_gaf, go_obo, go_release_metadata]
+    checksum: sha256_populated_and_verified_by_preflight
+    ontology: biological_process
+    edge_rule: shared_annotation
+    derivation_manifest: required_and_hash_verified
+    required_derivation_policy_fields:
+      - namespace
+      - qualifier_policy
+      - evidence_code_policy
+      - ancestor_propagation_policy
+      - depth_policy
+  coexpression:
+    fit_scope: control_only
+    measure: pearson
+    absolute_pearson_threshold: 0.3
+    threshold_rule: exclusive_gt_0.3_retain_all_edges
+  combined:
+    operation: exact_union
+    members: [string_ppi, gene_ontology, coexpression]
+    same_members_at_all_hvg_scales: true
+    interpretation: mixed_string_go_control_coexpression_support_sensitivity
+  string_go:
+    operation: exact_union
+    members: [string_ppi, gene_ontology]
+    same_members_at_all_hvg_scales: true
+
+model:
+  class: MatchedGAT
+  input_features: [control_only_log_normalized_mean_expression, binary_perturbation_indicator]
+  input_channels: 2
+  gene_identity_embedding:
+    enabled: true
+    dimension: 16
+    selected_gene_order_bound_by_preprocessing_hash: true
+    initialization_shared_across_support_arms: true
+  zero_target_indicator_allowed: false
+  hidden_dim: 128
+  attention_heads: 8
+  layers: 3
+  dropout: 0.1
+  hidden_normalization: per_node_layer_norm
+  self_loop_independence_contract:
+    graph_edge_message_passing: absent_between_distinct_nodes
+    other_node_input_invariance_in_eval_fixed_state: required_and_tested
+  initialization_shared_within_dataset_hvg_condition_seed: true
+  initialization_interpretation: identically_initialized_separately_trained
+  paired_initial_state_hash_validation: required_across_all_support_arms
+  optimizer_and_stopping_shared_across_arms: true
+
+training:
+  prediction_target: standardized_condition_mean_expression
+  reported_vector: standardized_condition_minus_standardized_control_expression
+  loss: mean_squared_error
+  loss_reduction: mean_across_selected_genes
+  optimizer_step_unit: one_condition_level_mean_profile
+  condition_weighting: equal_one_update_per_training_condition_per_epoch
+  cell_count_weighting: none_after_condition_mean_aggregation
+  training_condition_order: fixed_lexicographic_no_shuffle
+  hidden_normalization_axis: feature_channels_within_each_node_independently
+  validation_reduction: equal_mean_across_validation_conditions
+  maximum_epochs: 50
+  validation_fraction: 0.1
+  validation_split: deterministic_condition_level_within_each_held_out_fold
+  validation_selection_seed: 20260806
+  optimizer:
+    name: AdamW
+    learning_rate: 0.0005
+    weight_decay: 0.0001
+  scheduler:
+    name: CosineAnnealingLR
+    t_max: maximum_epochs
+    eta_min: 0.0
+    step: once_after_each_epoch
+  early_stopping:
+    monitor: condition_level_validation_mse
+    mode: minimize
+    patience: 10
+    minimum_delta: 0.00001
+    restore_best_weights: true
+    improvement_comparison: strict_less_than_best_minus_minimum_delta
+    tie_policy: not_an_improvement
+    first_finite_epoch_selected: true
+    stop_check: after_scheduler_step_each_epoch
+    stop_condition: consecutive_nonqualifying_epochs_greater_than_or_equal_to_patience
+    artifact_replay_required: true
+    trace_bound_to_artifact_and_checkpoint: true
+  saved_loss_history: [training_mse_each_epoch, validation_mse_each_epoch]
+  same_initialization_across_support_arms: true
+  separately_trained_after_identical_initialization: true
+  same_train_validation_conditions_across_support_arms: true
+  related_target_exclusion: exclude_any_shared_target_with_held_out
+
+evaluation:
+  split: leave_one_perturbation_out
+  condition_key: [dataset, hvg, arm, condition, seed]
+  held_out_condition_cells_used_for_training: false
+  minimum_cells_per_condition: 20
+  unencodable_target_policy: reason_coded_failure
+  metrics_recomputed_from_saved_vectors: true
+  secondary_metrics: [spearman_r, mse, top20_absolute_delta_jaccard]
+  top20_tie_break: descending_absolute_delta_then_ascending_gene_identifier
+
+statistics:
+  aggregation_and_resampling_unit: held_out_condition
+  primary_analysis_unit: guide_condition_identifier
+  primary_unit_interpretation: guide_conditions_are_not_unique_genes_or_target_sets
+  expected_seeds: [42, 43, 44]
+  seed_handling: average_within_condition_before_inference
+  primary_estimand: fixed_protocol_equal_benchmark_dataset_mean_string_go_minus_dense_pearson_r
+  primary_contrast: string_go_minus_dense
+  fixed_protocol_not_per_arm_optimum: true
+  archived_optimisation_repeatability_reference: 0.010
+  archived_reference_role: descriptive_precision_context_without_success_authority
+  primary_interval: 95pct_conditional_bootstrap_uncertainty_interval
+  nominal_coverage_claim: prohibited
+  bootstrap_replicates: 20000
+  bootstrap_random_seed: 20260806
+  cross_dataset_summary: equal_benchmark_dataset_mean_with_condition_resampling_within_dataset
+  dataset_composition_statement: three_of_four_benchmark_datasets_are_K562
+  equal_cell_line_sensitivity:
+    enabled: true
+    cell_line_groups:
+      K562: [adamson, norman, replogle_k562]
+      RPE1: [replogle_rpe1]
+    weighting: equal_cell_line_after_equal_dataset_mean_within_cell_line
+  dependence_sensitivities:
+    target_cluster_resampling: required
+    leave_target_out: required
+    leave_pathway_out: required_or_explicit_NOT_AVAILABLE
+    shared_control_cell_bootstrap: measured_cell_resampling_interval_from_hash_bound_control_profiles_required
+  multiplicity_family: string_go_vs_dense_primary_200_hvg_analysis
+  primary_multiplicity:
+    family: [string_go_minus_dense]
+    scope: primary_panel_200_hvg
+    correction: not_applicable_single_primary_contrast
+  secondary_multiplicity:
+    families:
+      - topology_null_string_go_vs_10_degree_preserving_rewires
+      - string_go_and_dense_vs_same_self_loop_control
+      - conditional_non_overlap_string_go_and_dense_replication
+    status: explicitly_secondary
+    correction: benjamini_hochberg_within_each_family
+  scale_contrast:
+    estimand: paired_change_in_string_go_minus_dense_delta_pearson_r
+    contrasts: [500_minus_200_hvg, 1000_minus_200_hvg]
+    pairing_key: [dataset, panel, condition, seed, arm]
+    multiplicity: two_contrast_benjamini_hochberg
+    evaluation_spaces: [native_hvg, common_200_gene]
+    common_200_gene_order_hash_required: true
+  topology_null_summary: compare_string_go_with_distribution_across_rewire_replicates
+  target_level_sensitivity:
+    status: explicitly_secondary_sensitivity
+    guide_aggregation: equal_weight_guide_conditions_within_canonical_target_set
+    resampling_unit: canonical_target_set_within_dataset
+    cross_dataset_summary: equal_weight_dataset_means
+    bootstrap_replicates: 20000
+    bootstrap_random_seed: 20260806
+  primary_claim_gate:
+    directional_decisions: [DIRECTIONAL_POSITIVE, DIRECTIONAL_NEGATIVE, INCONCLUSIVE]
+    directional_decision_source: unrounded_primary_interval_relative_to_zero_only
+    sparse_support_wording_requires:
+      [DIRECTIONAL_POSITIVE, CLAIM_CONSEQUENCE_GATE_PASS,
+       BASELINE_ABSOLUTE_SKILL_ELIGIBLE, CONDITION_RANKING_CONSEQUENCE_ELIGIBLE]
+    biological_edge_wording_requires:
+      [DIRECTIONAL_POSITIVE, CLAIM_CONSEQUENCE_GATE_PASS,
+       BASELINE_ABSOLUTE_SKILL_ELIGIBLE, CONDITION_RANKING_CONSEQUENCE_ELIGIBLE,
+       TOPOLOGY_DIRECTIONALLY_SUPPORTIVE, TOPOLOGY_DIAGNOSTICS_PASS]
+    positive_without_consequence_wording: positive_effect_without_interpretable_benefit
+    positive_with_consequence_without_topology_wording: sparse_support_wording_allowed
+    negative_wording: negative_directional_effect
+    inconclusive_wording: benefit_not_demonstrated
+
+hypothesis_families:
+  primary:
+    label: PRIMARY_STRING_GO_VS_DENSE_200
+    denominator: 1
+    adjustment: not_applicable_single_test
+  mixed_support:
+    label: MIXED_COMBINED_VS_DENSE_200_SENSITIVITY
+    denominator: 1
+    adjustment: not_applicable_single_sensitivity_test
+  topology:
+    label: TOPOLOGY_STRING_GO_VS_10_REWIRES
+    denominator: 10_graph_instances_one_ensemble_test
+    adjustment: prespecified_ensemble_resampling
+  propagation:
+    label: PROPAGATION_STRING_GO_AND_DENSE_VS_SELF_LOOP
+    denominator: 2
+    adjustment: benjamini_hochberg_two_member_family
+  scale:
+    label: SCALE_500_AND_1000_VS_200
+    denominator: 2_per_evaluation_space
+    evaluation_spaces: [native_hvg, common_200_gene]
+    adjustment: benjamini_hochberg_within_evaluation_space
+  conditional:
+    label: CONDITIONAL_INDEPENDENT_PANEL_STRING_GO_VS_DENSE
+    denominator: 1_if_triggered
+    adjustment: not_applicable_single_test
+  secondary:
+    label: SECONDARY_METRICS_AND_RANKING
+    denominator: 4_per_declared_metric_family
+    adjustment: benjamini_hochberg_within_declared_family
+  external_validity:
+    label: EXTERNAL_COMPARATOR_VALIDITY
+    denominator: 3
+    members: [GEARS, scGPT, Geneformer]
+    adjustment: validity_gates_not_performance_hypotheses
+  external_performance:
+    label: EXTERNAL_COMPARATOR_SCALE_PERFORMANCE
+    denominator: 3_per_passing_adapter
+    members: [GEARS, scGPT, Geneformer]
+    scale_contrasts: [200_hvg_overall, 500_hvg_overall, 1000_hvg_overall]
+    estimand: adapter_minus_revision_string_go_pearson_r
+    reference_model_id: revision_string_go
+    identical_support_required:
+      [dataset, hvg, primary_panel, condition_order, gene_order, split, target_mapping]
+    prohibited_references: [legacy_combined, dense, anonymous_matched_reference]
+    adjustment: benjamini_hochberg_within_each_passing_adapter
+    cross_adapter_pooling: prohibited
+
+analytic_baselines:
+  methods: [zero_control_delta, training_condition_mean, deterministic_ridge_linear]
+  source: retained_training_and_truth_vectors
+  split: identical_leave_one_perturbation_out
+  ridge_alpha: 1.0
+  ridge_feature_space: training_only_binary_target_indicators
+  test_condition_used_for_fit: false
+  shared_artifact_key: [dataset, hvg, panel, held_out_condition]
+  neural_seed_in_artifact_identity: false
+  shared_across_neural_seeds_and_analysis_blocks: true
+  reporting: absolute_skill_and_improvement_over_each_baseline
+  accounting: analytic_refits_excluded_from_neural_fit_count
+
+precision_design:
+  status: pre_outcome_required
+  source: legacy_archive_variance_and_dependence_structure_only
+  frozen_archive_id: submitted_legacy_archive_pre_revision
+  frozen_source_selection_date: 2026-08-07
+  trusted_source_bindings: [caller_pinned_archive_condition_table_sha256,
+                            caller_pinned_canonical_target_map_sha256]
+  condition_variance_formula: sample_variance_ddof_1_of_archived_condition_deltas
+  target_cluster_icc_formula: one_way_random_effects_anova_unbalanced_n0
+  mean_guides_per_target_formula: arithmetic_mean_condition_count_per_target
+  source_join: exact_one_to_one_dataset_condition
+  zero_center_before_simulation: true
+  new_outcome_access: prohibited
+  planned_conditions_per_dataset: 50
+  uncertainty_half_width_target: 0.010
+  target_role: precision_not_utility_or_success
+  simulation_summary: q90_of_simulated_95pct_conditional_bootstrap_interval_width
+  interval_width_gate: 0.020
+  simulation_random_seed: 20260806
+  minimum_simulation_replicates: 100
+  minimum_bootstrap_replicates_per_simulation: 500
+  cluster_aware_simulation_required: true
+  conservative_scenario_grid:
+    - {scenario_id: archive_proxy, variance_multiplier: 1.0,
+       target_cluster_icc_floor: 0.0}
+    - {scenario_id: variance_inflated_125, variance_multiplier: 1.25,
+       target_cluster_icc_floor: 0.0}
+    - {scenario_id: cluster_floor_025, variance_multiplier: 1.0,
+       target_cluster_icc_floor: 0.25}
+    - {scenario_id: joint_variance_125_cluster_floor_025, variance_multiplier: 1.25,
+       target_cluster_icc_floor: 0.25}
+  worst_scenario_q90_controls_gate: true
+  legacy_archive_is_proxy_not_matched_run_width_guarantee: true
+  source_component_recomputation_required: true
+  registry_self_hash_required: true
+
+hyperparameter_provenance:
+  estimand: fixed_frozen_protocol_not_per_arm_optimum
+  required_fields: [parameter, value, source, selection_date, inherited_from_submission,
+                    legacy_outcomes_seen, tuning_policy]
+  records:
+    - {parameter: hidden_dim, value: 128, source: inherited_submission_architecture,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: attention_heads, value: 8, source: inherited_submission_architecture,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: layers, value: 3, source: inherited_submission_architecture,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: dropout, value: 0.1, source: inherited_submission_architecture,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: learning_rate, value: 0.0005, source: inherited_submission_training,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: weight_decay, value: 0.0001, source: inherited_submission_training,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: maximum_epochs, value: 50, source: revision_compute_budget,
+       selection_date: "2026-08-07", inherited_from_submission: false,
+       legacy_outcomes_seen: true, tuning_policy: frozen_equal_budget_all_arms}
+    - {parameter: early_stopping_patience, value: 10, source: revision_protocol,
+       selection_date: "2026-08-07", inherited_from_submission: false,
+       legacy_outcomes_seen: true, tuning_policy: training_only_validation_no_test_tuning}
+    - {parameter: coexpression_abs_r_threshold, value: 0.3, source: inherited_submission_graph,
+       selection_date: pre_revision_submission, inherited_from_submission: true,
+       legacy_outcomes_seen: true, tuning_policy: mixed_support_sensitivity_only}
+    - {parameter: string_combined_score_threshold, value: 400,
+       source: inherited_submission_graph, selection_date: pre_revision_submission,
+       inherited_from_submission: true, legacy_outcomes_seen: true,
+       tuning_policy: frozen_no_revision_outcome_tuning}
+    - {parameter: hidden_normalization, value: per_node_layer_norm,
+       source: revision_architecture_repair, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: structural_leakage_prevention_not_outcome_tuned}
+    - {parameter: gene_identity_dimension, value: 16,
+       source: frozen_revision_model_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: frozen_before_new_outcomes_no_per_arm_tuning}
+    - {parameter: validation_fraction, value: 0.1,
+       source: frozen_revision_training_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: training_only_validation_no_test_tuning}
+    - {parameter: validation_selection_seed, value: 20260806,
+       source: frozen_revision_training_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: deterministic_design_choice}
+    - {parameter: early_stopping_minimum_delta, value: 0.00001,
+       source: frozen_revision_training_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: training_only_validation_no_test_tuning}
+    - {parameter: scheduler_name, value: CosineAnnealingLR,
+       source: frozen_revision_training_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: shared_across_arms_no_per_arm_tuning}
+    - {parameter: scheduler_eta_min, value: 0.0,
+       source: frozen_revision_training_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: shared_across_arms_no_per_arm_tuning}
+    - {parameter: ridge_alpha, value: 1.0,
+       source: frozen_analytic_baseline_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: fixed_no_test_outcome_tuning}
+    - {parameter: primary_panel_size, value: 50,
+       source: frozen_revision_panel_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: design_capacity_not_outcome_tuned}
+    - {parameter: panel_selection_seed, value: 20260806,
+       source: frozen_revision_panel_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: deterministic_design_choice}
+    - {parameter: primary_bootstrap_replicates, value: 20000,
+       source: frozen_revision_inference_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: precision_stability_not_outcome_threshold}
+    - {parameter: primary_bootstrap_random_seed, value: 20260806,
+       source: frozen_revision_inference_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: deterministic_design_choice}
+    - {parameter: precision_interval_width_q90_threshold, value: 0.020,
+       source: pre_outcome_precision_target, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: precision_only_no_utility_or_success_authority}
+    - {parameter: precision_simulation_random_seed, value: 20260806,
+       source: pre_outcome_precision_target, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: deterministic_design_choice}
+    - {parameter: precision_variance_multipliers, value: [1.0, 1.25],
+       source: conservative_precision_scenario_grid, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: frozen_archive_proxy_variance_stress_test}
+    - {parameter: precision_target_cluster_icc_floors, value: [0.0, 0.25],
+       source: conservative_precision_scenario_grid, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: frozen_archive_proxy_dependence_stress_test}
+    - {parameter: topology_rewire_seeds,
+       value: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010],
+       source: frozen_topology_null_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: prespecified_null_instances_no_outcome_tuning}
+    - {parameter: topology_rewire_multiplier, value: 10.0,
+       source: frozen_topology_null_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: prespecified_graph_randomisation_budget}
+    - {parameter: topology_minimum_swapped_edge_fraction, value: 0.80,
+       source: frozen_topology_null_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: prespecified_topology_change_diagnostic}
+    - {parameter: string_release, value: STRING_v12.0,
+       source: frozen_graph_source_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: external_release_provenance_not_outcome_tuned}
+    - {parameter: go_edge_policy,
+       value: biological_process_shared_annotation_hash_verified_derivation,
+       source: frozen_graph_source_contract, selection_date: "2026-08-07",
+       inherited_from_submission: false, legacy_outcomes_seen: true,
+       tuning_policy: ontology_policy_predeclared_before_new_outcomes}
+
+artifacts:
+  format: json_gzip
+  atomic_write: true
+  required_input_hashes:
+    [dataset, protocol, dataset_passport, condition_panel_manifest,
+     target_encoding_audit, preflight_summary, environment_manifest,
+     environment_lock, git_provenance, nested_gene_panel_manifest,
+     shared_control_cell_evidence,
+     precision_design_registry, precision_archive_condition_table,
+     precision_target_map, hyperparameter_provenance]
+  required_fields:
+    - gene_names
+    - y_true
+    - y_pred
+    - train_loss
+    - validation_loss
+    - learning_rate
+    - vector_space
+    - config
+    - config_hash
+    - input_hashes
+    - graph_support_hash
+    - preprocessing_state_hash
+    - architecture_hash
+    - initialization_hash
+    - code_hash
+    - checkpoint_path
+    - checkpoint_hash
+    - runtime
+  checkpoint_validation:
+    safe_decode_required: true
+    cross_bindings:
+      [identity, full_config_hash, input_hashes_hash, architecture,
+       graph_support_hash, preprocessing_state_hash, code_hash,
+       git_commit, git_worktree_status, git_status_hash, vector_space,
+       gene_names_hash, initialization_hash, best_epoch,
+       early_stopping_observation, deterministic_backend]
+
+environment_lock:
+  format: cbac-complete-pip-freeze-v2
+  required_runtime_headers:
+    [python-version, cuda-runtime-version, cudnn-version, nvidia-driver-version,
+     pytorch-version, pytorch-geometric-version,
+     complete-distribution-set-sha256, direct-runtime-dependencies-sha256,
+     pyg-extension-versions-sha256]
+  package_policy: exact_complete_active_distribution_set_and_versions
+  direct_dependency_source: pyproject_runtime_model_and_h5ad_dependencies
+  production_h5ad_requires_h5py: true
+  placeholder_policy: hard_failure
+
+git_provenance:
+  base_commit: exact_40_lowercase_hex
+  worktree_status: [CLEAN, DIRTY]
+  dirty_state_policy: path_redacted_porcelain_status_hash_and_entry_count
+  code_tree_hash_required: true
+  bound_to_each_fold_artifact: true
+
+release_registry:
+  exact_result_lock_count: 13
+  exact_result_lock_ids:
+    [PRIMARY-DELTA-R, PRIMARY-UNCERTAINTY-INTERVAL, PRIMARY-DECISION,
+     PROPAGATION-CONTROL, SCALE-INTERACTION, TOPOLOGY-NULL,
+     REPRESENTATIVENESS-TRIGGER, CONDITIONAL-PANEL, FRACTION-IMPROVED,
+     EMPIRICAL-SEED-RESOLUTION, SECONDARY-METRICS, EXTERNAL-COMPARATOR-VALIDATION,
+     MEASURED-COMPUTE]
+  mandatory_fit_coverage_cascades_to_numeric_locks: true
+  not_triggered_is_valid_for:
+    [REPRESENTATIVENESS-TRIGGER, CONDITIONAL-PANEL]
+  empirical_seed_resolution_role: descriptive_parallel_audit_not_primary_threshold
+  source_values_rendering:
+    modes: [author-review, released]
+    exact_lock_macro_count: 13
+    released_mode_requires_all_locks_released: true
+    self_hashed_round_trip_manifest_required: true
+    manual_transcription_policy: prohibited
+    numeric_json_type_policy: number_only_bool_and_numeric_strings_rejected
+    nonfinite_numeric_policy: rejected
+    display_rounding: decimal_round_half_up
+    primary_point_inside_ci_required: true
+    primary_decision_recomputed_from_unrounded_ci: true
+    primary_decision_reference: zero_only
+    archived_optimisation_repeatability_reference_has_success_authority: false
+    cross_lock_biological_claim_gate_required: true
+  release_assets:
+    modes: [author-review, released]
+    released_mode_missing_asset_policy: WITHHELD
+    semantic_round_trip_required: true
+    manifest_self_hash_required: true
+    formats: [csv, tex, svg, pdf]
+    required_asset_groups:
+      [primary_summary_and_forest, paired_condition_distribution,
+       fraction_improved_interval, target_sensitivity, topology_instances_and_diagnostics,
+       scale_native_and_common200, propagation, representativeness_and_conditional,
+       secondary_ranking_and_multiplicity, baseline_absolute_skill,
+       compute_and_failure_denominators, external_diagnostics_and_exclusions]
+  main_release_trust_boundary:
+    anchor_id: CBAC-MAIN-RELEASE-TRUST-V1
+    mode: caller_pinned_detached_file_sha256
+    detached_from_evidence_bundle_required: true
+    caller_pinned_sha256_required: true
+    synchronized_bundle_rewrite_policy: WITHHELD
+    author_review_anchor_policy: absent_no_placeholder_anchor
+    trusted_categories:
+      [dataset_passports, dataset_files, graph_files, string_go_source_and_policy,
+       split_condition_target_order, protocol, entrypoint_environment,
+       raw_predictions_traces, baseline_inputs, precision_simulation_inputs,
+       topology_diagnostics, release_asset_manifest]
+    caller_control_plane_boundary: caller_hash_must_be_immutable_to_bundle_attacker
+
+measured_compute:
+  attempt_ledger: append_only_across_invocations_by_exact_fit_key
+  attempt_start_persistence: STARTED_UNFINALIZED_written_atomically_before_fit
+  unresolved_started_attempt_policy: block_resume_until_operator_resolution
+  orphan_ledger_policy: detect_newer_content_addressed_ledger_and_block
+  required_phase_seconds:
+    [training, inference, checkpoint_io, other_overhead, useful_compute,
+     failed_attempt, retry_overhead]
+  required_hardware_fields:
+    [accelerator_model, accelerator_count, cpu_model, logical_cpu_count,
+     host_ram_bytes]
+  completed_fit_retry_policy: skip_existing_success_and_retain_prior_failures
+  successful_attempt_policy: exactly_one_success_and_success_is_final_attempt_per_fit_key
+  timing_scope: setup_training_inference_checkpoint_io_excludes_artifact_json_and_ledger_publish
+
+external_positive_control:
+  system: GEARS
+  official_repository: https://github.com/snap-stanford/GEARS
+  pinned_commit: f374e43e197b295016d80395d7a54ddb81cc6769
+  official_metric_source: gears/inference.py
+  official_metric_function: gears.inference.compute_metrics
+  manifest_and_hash_verified_reference_required: true
+  missing_or_placeholder_policy: WITHHELD
+  tolerance_policy: explicit_per_metric_absolute_relative_and_justification
+  raw_evidence_required:
+    [prediction_vectors, truth_vectors, de_prediction_vectors, de_truth_vectors,
+     reported_metrics, baseline_metrics, training_loss, validation_loss,
+     gene_order, perturbable_gene_order, condition_target_indices,
+     condition_target_indicators, identifier_coverage, target_mapping_audit]
+  phase_roles:
+    official_reference: official_reference
+    candidate: heldout_adaptation
+  expected_value_provenance_cross_bindings:
+    [phase_role, expected_metrics, repository_url, commit, dataset_sha256,
+     split, entrypoint_sha256, argv_sha256, frozen_before_execution]
+  identical_workflow_policy: explicit_pinned_reuse_and_distinct_provenance_required
+  official_metric_recomputation_required: true
+  semantic_diagnostic_gates:
+    prediction_nondegeneracy: strictly_positive_prediction_standard_deviation
+    baseline_superiority: strictly_positive_directional_improvement_for_every_metric
+    training_loss_improvement: first_epoch_minus_final_epoch_strictly_positive
+    validation_loss_improvement: first_epoch_minus_final_epoch_strictly_positive
+    reader_null_pass_policy: prohibited
+  trust_boundary:
+    mode: caller_pinned_sha256_over_detached_anchor_and_external_sources
+    detached_anchor_must_be_outside_evidence_bundle: true
+    caller_pinned_anchor_sha256_required: true
+    trusted_external_sources:
+      [environment_lock, execution_plan, dataset, official_metric_source,
+       phase_entrypoints, phase_expected_value_provenance, phase_execution_audits,
+       phase_raw_evidence, phase_initialization_state, phase_checkpoint_state,
+       phase_graph_state, phase_outputs]
+    independent_recomputation_required:
+      [environment_lock_structure, execution_plan_self_hash, dataset_content_hash,
+       phase_roles, expected_value_provenance, gene_order,
+       perturbable_gene_order, condition_target_indices,
+       condition_target_indicators, graph_semantic_bindings]
+    synchronized_bundle_rewrite_policy: WITHHELD
+    caller_control_plane_boundary: caller_pinned_sha256_must_be_immutable_to_bundle_attacker
+  eligibility_branches:
+    valid_and_within_tolerance: ELIGIBLE_POSITIVE_CONTROL_PASSED
+    valid_but_outside_tolerance: EXCLUDED_FAILED_POSITIVE_CONTROL
+    invalid_or_incomplete_evidence: WITHHELD_INVALID_OR_INCOMPLETE_EVIDENCE
+
+external_comparator_validity_family:
+  headline_lock_id: EXTERNAL-COMPARATOR-VALIDATION
+  members: [GEARS, scGPT, Geneformer]
+  allowed_member_decisions: [PASS, EXCLUDED, WITHHELD]
+  family_release_requires_no_withheld_member: true
+  parse_valid_scalar_is_scientific_validity: false
+  generic_required_bindings:
+    [official_repository, pinned_commit, dataset, split, target_mapping,
+     prediction_vectors, truth_vectors, vector_row_conditions, training_loss,
+     validation_loss, gene_order, baseline_vectors, baseline_provenance,
+     baseline_training_vectors, baseline_training_row_conditions,
+     independent_expected_value_provenance]
+  missing_binding_decision: WITHHELD
+  invalid_or_incomplete_evidence_decision: WITHHELD
+  completed_scientific_gate_failure_decision: EXCLUDED
+  claim_deletion_exclusion:
+    explicit_self_hashed_reason_coded_manifest_required: true
+    claim_deleted_required: true
+    naked_missing_manifest_decision: WITHHELD
+    valid_claim_deletion_decision: EXCLUDED
+  ranking_policy: include_only_PASS_members
+  GEARS_validator: detached_anchor_positive_control
+  scGPT_validator: hash_bound_full_vector_evidence
+  Geneformer_validator: hash_bound_full_vector_evidence
+
+planned_fit_counts:
+  datasets: 4
+  hvg_scales: 3
+  conditions_per_panel: 50
+  seeds: 3
+  topology_primary_200_hvg_arms:
+    dense: 1
+    self_loop: 1
+    string_go: 1
+    degree_preserving_rewire: 10
+  topology_primary_arms_total: 13
+  topology_primary_200_hvg_fits: 7800
+  mixed_support_sensitivity_arm_scale_cells:
+    combined_200: 1
+  mixed_support_sensitivity_fits: 600
+  scale_extension_arm_scale_cells:
+    string_go_500: 1
+    dense_500: 1
+    string_go_1000: 1
+    dense_1000: 1
+  scale_extension_fits: 2400
+  analytic_baseline_evaluations: 1800
+  analytic_ridge_refits: 600
+  analytic_baselines_in_neural_fit_total: false
+  mandatory_total_fits: 10800
+  conditional_non_overlap_arms: [string_go, dense]
+  conditional_non_overlap_fits_if_triggered: 1200
+  worst_case_total_fits: 12000
+  unique_control_only_preprocessing_fits: 12
+
+analysis_blocks:
+  topology_primary:
+    hvg_scales: [200]
+    default_arms:
+      [dense, self_loop, string_go, string_go_rewire_01, string_go_rewire_02,
+       string_go_rewire_03, string_go_rewire_04, string_go_rewire_05,
+       string_go_rewire_06, string_go_rewire_07, string_go_rewire_08,
+       string_go_rewire_09, string_go_rewire_10]
+  mixed_support_sensitivity:
+    hvg_scales: [200]
+    default_arms: [combined]
+  scale_extension:
+    default_arms_by_hvg:
+      500: [string_go, dense]
+      1000: [string_go, dense]
+    string_go_and_dense_200_reused_from: topology_primary
+  conditional_nonoverlap:
+    hvg_scales: [200]
+    default_arms: [string_go, dense]
+    execute_only_if_representativeness_triggered: true

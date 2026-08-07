@@ -1,0 +1,5 @@
+dataset,n_archived_conditions,n_contains_plus,n_contains_underscore,n_guide_suffix,h5ad_metadata_available,source_perturbation_column,n_archived_labels_in_source_values,n_guaranteed_none_before_hvg_subset
+adamson,50,0,50,50,true,perturbation,50,50
+norman,50,0,27,0,true,perturbation,50,27
+replogle_k562,50,0,0,0,false,,not_assessed,not_assessed
+replogle_rpe1,50,0,0,0,false,,not_assessed,not_assessed

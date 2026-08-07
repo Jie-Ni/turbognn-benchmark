@@ -1,0 +1,5 @@
+evidence_id,observed,implication
+MASK-PARSER-PLUS-ONLY,true,Legacy target parsing recognises only plus-separated labels.
+MASK-NONE-ON-NO-MATCH,true,No exact gene-name match yields a None mask rather than a stopped fold.
+MODEL-NONE-WILDTYPE,true,The archived graph model documents None as a wild-type prediction.
+MODEL-MASK-CONDITIONAL,true,Target masking is applied only when a non-None mask is supplied.

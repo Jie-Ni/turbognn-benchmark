@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "phase_role": "heldout_adaptation",
+  "source_kind": "predeclared_heldout_adaptation_target",
+  "source_id": "REPLACE_WITH_HELDOUT_EXPECTED_VALUE_SOURCE_ID",
+  "frozen_before_execution": true,
+  "repository_url": "https://github.com/snap-stanford/GEARS",
+  "commit": "f374e43e197b295016d80395d7a54ddb81cc6769",
+  "dataset_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "split": {
+    "name": "simulation",
+    "seed": 1
+  },
+  "entrypoint_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "argv_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "expected_metrics": {
+    "mse": "REPLACE_WITH_PREDECLARED_HELDOUT_TARGET_VALUE",
+    "mse_de": "REPLACE_WITH_PREDECLARED_HELDOUT_TARGET_VALUE",
+    "pearson": "REPLACE_WITH_PREDECLARED_HELDOUT_TARGET_VALUE",
+    "pearson_de": "REPLACE_WITH_PREDECLARED_HELDOUT_TARGET_VALUE"
+  },
+  "record_hash": "REPLACE_WITH_CANONICAL_RECORD_HASH"
+}

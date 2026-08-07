@@ -1,0 +1,383 @@
+{
+  "canonical_include_source_id": "released_results_include.tex",
+  "entries": [
+    {
+      "asset_group": "baseline_absolute_skill",
+      "bytes": 73,
+      "media_type": "text/csv",
+      "sha256": "aa718848763db9f1997d125ceaf36046394f3743d2b4798370a731de061b571e",
+      "source_id": "release_assets/baseline_absolute_skill.csv"
+    },
+    {
+      "asset_group": "baseline_absolute_skill",
+      "bytes": 18495,
+      "media_type": "application/pdf",
+      "sha256": "aa923fc6be6717a510fafe57f175eac5f224270c7ae09d413d098e3fd1433053",
+      "source_id": "release_assets/baseline_absolute_skill.pdf"
+    },
+    {
+      "asset_group": "baseline_absolute_skill",
+      "bytes": 29238,
+      "media_type": "image/svg+xml",
+      "sha256": "1fc31fe53e2044d999e716353f36bfa54587101127813e74eeed61e1c887ae6c",
+      "source_id": "release_assets/baseline_absolute_skill.svg"
+    },
+    {
+      "asset_group": "baseline_absolute_skill",
+      "bytes": 212,
+      "media_type": "application/x-tex",
+      "sha256": "0edf05f7a4c46bfe39b9905b82bf232d1633430881b09f829990f7bfe357cdbf",
+      "source_id": "release_assets/baseline_absolute_skill.tex"
+    },
+    {
+      "asset_group": "compute_and_failure_denominators",
+      "bytes": 82,
+      "media_type": "text/csv",
+      "sha256": "6ce25a2ae7dc37584b3dd86e6235659f5494dc4c6d87e0d577ccb0ec5cc07d6f",
+      "source_id": "release_assets/compute_and_failure_denominators.csv"
+    },
+    {
+      "asset_group": "compute_and_failure_denominators",
+      "bytes": 17972,
+      "media_type": "application/pdf",
+      "sha256": "19985260b5b92b0b5a61376e75679cea54db315fb4456020868763293fd776a5",
+      "source_id": "release_assets/compute_and_failure_denominators.pdf"
+    },
+    {
+      "asset_group": "compute_and_failure_denominators",
+      "bytes": 28966,
+      "media_type": "image/svg+xml",
+      "sha256": "b174a35e555285dcf7d8a6d787697b5b5c524bffab49759ed5698c0bf0e1dbae",
+      "source_id": "release_assets/compute_and_failure_denominators.svg"
+    },
+    {
+      "asset_group": "compute_and_failure_denominators",
+      "bytes": 221,
+      "media_type": "application/x-tex",
+      "sha256": "a21bfc88c94d6de3a593daa5057787a56428d02f4fcb8bffbb4020f2ad63c9d2",
+      "source_id": "release_assets/compute_and_failure_denominators.tex"
+    },
+    {
+      "asset_group": "external_diagnostics_and_exclusions",
+      "bytes": 85,
+      "media_type": "text/csv",
+      "sha256": "a96cd79777ea28c9c78d31c75236eaac7e353e200e8176b69fbdc6350476ad65",
+      "source_id": "release_assets/external_diagnostics_and_exclusions.csv"
+    },
+    {
+      "asset_group": "external_diagnostics_and_exclusions",
+      "bytes": 17652,
+      "media_type": "application/pdf",
+      "sha256": "eb33e1a4970f1be39680c90ebebcd7bd22db523e7ddc120cbe944b10457f0352",
+      "source_id": "release_assets/external_diagnostics_and_exclusions.pdf"
+    },
+    {
+      "asset_group": "external_diagnostics_and_exclusions",
+      "bytes": 28748,
+      "media_type": "image/svg+xml",
+      "sha256": "12b6e41c58214a935e718eaf812a87ce3355f100c81afaa0a19c0386a5be45a9",
+      "source_id": "release_assets/external_diagnostics_and_exclusions.svg"
+    },
+    {
+      "asset_group": "external_diagnostics_and_exclusions",
+      "bytes": 224,
+      "media_type": "application/x-tex",
+      "sha256": "be7f90a07305fd4ad697087c66fc671f790ee12b4cad1eedc66645bfdd46fcb4",
+      "source_id": "release_assets/external_diagnostics_and_exclusions.tex"
+    },
+    {
+      "asset_group": "fraction_improved_interval",
+      "bytes": 76,
+      "media_type": "text/csv",
+      "sha256": "08b65121b18efca23249e634721986a0319636fd9bbaced51c9a092e6a40daad",
+      "source_id": "release_assets/fraction_improved_interval.csv"
+    },
+    {
+      "asset_group": "fraction_improved_interval",
+      "bytes": 17354,
+      "media_type": "application/pdf",
+      "sha256": "b0923066f3518344e8df8472e04c8aab05693f728562632bef244a236b67bc9f",
+      "source_id": "release_assets/fraction_improved_interval.pdf"
+    },
+    {
+      "asset_group": "fraction_improved_interval",
+      "bytes": 27639,
+      "media_type": "image/svg+xml",
+      "sha256": "3b4aea93e533d67f11a0b620f4f65a22918702dfd00c31beb3582a7dde2a218c",
+      "source_id": "release_assets/fraction_improved_interval.svg"
+    },
+    {
+      "asset_group": "fraction_improved_interval",
+      "bytes": 215,
+      "media_type": "application/x-tex",
+      "sha256": "7dc3d150e629fe157c981418f8c42eb73cc084d2845690ab21971d0514a68396",
+      "source_id": "release_assets/fraction_improved_interval.tex"
+    },
+    {
+      "asset_group": "paired_condition_distribution",
+      "bytes": 79,
+      "media_type": "text/csv",
+      "sha256": "625bced45174f6e200709df790a33914ddb91467e39d27f6f9225b484c709dfc",
+      "source_id": "release_assets/paired_condition_distribution.csv"
+    },
+    {
+      "asset_group": "paired_condition_distribution",
+      "bytes": 18407,
+      "media_type": "application/pdf",
+      "sha256": "2673c4b667814a577489265f7dd8ac0633a2af33aedaa36e61c148d0c73ede4b",
+      "source_id": "release_assets/paired_condition_distribution.pdf"
+    },
+    {
+      "asset_group": "paired_condition_distribution",
+      "bytes": 29431,
+      "media_type": "image/svg+xml",
+      "sha256": "55718e54ba4ead64b74b1359960d3e44de6147f9a58c3c33c48829d634db1029",
+      "source_id": "release_assets/paired_condition_distribution.svg"
+    },
+    {
+      "asset_group": "paired_condition_distribution",
+      "bytes": 218,
+      "media_type": "application/x-tex",
+      "sha256": "0f5023d218d3e22c23bb700dbc1ec1449b3fa452628e02afd519a66b5f409abf",
+      "source_id": "release_assets/paired_condition_distribution.tex"
+    },
+    {
+      "asset_group": "primary_summary_and_forest",
+      "bytes": 76,
+      "media_type": "text/csv",
+      "sha256": "ee0c91e47f97a26d4844a5fd279ec6de5e3c616ad57cf71c8408936da5bc3089",
+      "source_id": "release_assets/primary_summary_and_forest.csv"
+    },
+    {
+      "asset_group": "primary_summary_and_forest",
+      "bytes": 18338,
+      "media_type": "application/pdf",
+      "sha256": "9ca97f904f09e21dff9132cdcaf2d84d4f9c249f4ed576623925a7fe2efd3987",
+      "source_id": "release_assets/primary_summary_and_forest.pdf"
+    },
+    {
+      "asset_group": "primary_summary_and_forest",
+      "bytes": 29042,
+      "media_type": "image/svg+xml",
+      "sha256": "b1e2f112f2d99dd2abb7a28e1dd47dc3673f65ac2792fb13b22170ab5739efd0",
+      "source_id": "release_assets/primary_summary_and_forest.svg"
+    },
+    {
+      "asset_group": "primary_summary_and_forest",
+      "bytes": 215,
+      "media_type": "application/x-tex",
+      "sha256": "c11a8f8712cb8df64d5aff69d73a3c7697c381619575be90f45988c2f8b70535",
+      "source_id": "release_assets/primary_summary_and_forest.tex"
+    },
+    {
+      "asset_group": "propagation",
+      "bytes": 61,
+      "media_type": "text/csv",
+      "sha256": "a7c09fd5641b56d119190ea11903502380412165bfb6cd02cfb865ff8f03f044",
+      "source_id": "release_assets/propagation.csv"
+    },
+    {
+      "asset_group": "propagation",
+      "bytes": 17423,
+      "media_type": "application/pdf",
+      "sha256": "7355505ef3723e29297c9d1c4b8bcf9c7ccf062bc2ec92c8dc9d9439f9054f01",
+      "source_id": "release_assets/propagation.pdf"
+    },
+    {
+      "asset_group": "propagation",
+      "bytes": 26617,
+      "media_type": "image/svg+xml",
+      "sha256": "aac6b5fa89aa8ae9bff7280cd1f87f4caa301e5c03bf19c15461399dce4bb018",
+      "source_id": "release_assets/propagation.svg"
+    },
+    {
+      "asset_group": "propagation",
+      "bytes": 200,
+      "media_type": "application/x-tex",
+      "sha256": "f964d68ba3089c6de8aaf936a283206ccbc775021b5bd7bba652cee4a5e698ef",
+      "source_id": "release_assets/propagation.tex"
+    },
+    {
+      "asset_group": "representativeness_and_conditional",
+      "bytes": 84,
+      "media_type": "text/csv",
+      "sha256": "8710732ea1077dcb601556582ecfe5d4e41bc8f737a336ee36625466d8ba9f31",
+      "source_id": "release_assets/representativeness_and_conditional.csv"
+    },
+    {
+      "asset_group": "representativeness_and_conditional",
+      "bytes": 17527,
+      "media_type": "application/pdf",
+      "sha256": "2fdee3250aec687d63f8e1acbee129939770df05ac647f1a7aa809783f6ddd29",
+      "source_id": "release_assets/representativeness_and_conditional.pdf"
+    },
+    {
+      "asset_group": "representativeness_and_conditional",
+      "bytes": 28544,
+      "media_type": "image/svg+xml",
+      "sha256": "e26cff565933e9ecf8d31b26c3356ad972d854a5d42a22a7951a3f6391e688c5",
+      "source_id": "release_assets/representativeness_and_conditional.svg"
+    },
+    {
+      "asset_group": "representativeness_and_conditional",
+      "bytes": 223,
+      "media_type": "application/x-tex",
+      "sha256": "013d52fbe9920eca01e5db9f0470a2b9b8725fa11a2bfe014a705af95f43aa33",
+      "source_id": "release_assets/representativeness_and_conditional.tex"
+    },
+    {
+      "asset_group": "scale_native_and_common200",
+      "bytes": 76,
+      "media_type": "text/csv",
+      "sha256": "80df181ad1b517887cabf9c895fb01b527dc7a96e2680df06ded7e200c4a8cda",
+      "source_id": "release_assets/scale_native_and_common200.csv"
+    },
+    {
+      "asset_group": "scale_native_and_common200",
+      "bytes": 18816,
+      "media_type": "application/pdf",
+      "sha256": "756c52b1d213757becdf24a06f40a41bb465154465a625902829f3603f73c48e",
+      "source_id": "release_assets/scale_native_and_common200.pdf"
+    },
+    {
+      "asset_group": "scale_native_and_common200",
+      "bytes": 29793,
+      "media_type": "image/svg+xml",
+      "sha256": "e75fd43d0890fe17b020ec82b76f5f4f31b8c018073e7fe3965dfd6ae68bd018",
+      "source_id": "release_assets/scale_native_and_common200.svg"
+    },
+    {
+      "asset_group": "scale_native_and_common200",
+      "bytes": 215,
+      "media_type": "application/x-tex",
+      "sha256": "fbf204c59553f55380f2b96d8aa67999257262b0f93f14c0b2cfea21a188ce97",
+      "source_id": "release_assets/scale_native_and_common200.tex"
+    },
+    {
+      "asset_group": "secondary_ranking_and_multiplicity",
+      "bytes": 84,
+      "media_type": "text/csv",
+      "sha256": "2cb13dece7d4c7f19d5ad9d25b013b4ffa028e54bee667288d262a146fa4143e",
+      "source_id": "release_assets/secondary_ranking_and_multiplicity.csv"
+    },
+    {
+      "asset_group": "secondary_ranking_and_multiplicity",
+      "bytes": 18258,
+      "media_type": "application/pdf",
+      "sha256": "f05aea17696ddc8e11f4c7813baff4cc07f64d87fc00b194313482fa63d47bc6",
+      "source_id": "release_assets/secondary_ranking_and_multiplicity.pdf"
+    },
+    {
+      "asset_group": "secondary_ranking_and_multiplicity",
+      "bytes": 29545,
+      "media_type": "image/svg+xml",
+      "sha256": "c8d89948376400dec9e8ce9bafac53c6b5e0df456b80f1584c261d0949f0378c",
+      "source_id": "release_assets/secondary_ranking_and_multiplicity.svg"
+    },
+    {
+      "asset_group": "secondary_ranking_and_multiplicity",
+      "bytes": 223,
+      "media_type": "application/x-tex",
+      "sha256": "8c876d533e92da6d5d93939e119e557414ac5fae9a3e4a1c41e152c1b577398e",
+      "source_id": "release_assets/secondary_ranking_and_multiplicity.tex"
+    },
+    {
+      "asset_group": "target_sensitivity",
+      "bytes": 68,
+      "media_type": "text/csv",
+      "sha256": "16a78138dae63127251d148736c24c36d110b09cbf0d1dfed59db32cb41202eb",
+      "source_id": "release_assets/target_sensitivity.csv"
+    },
+    {
+      "asset_group": "target_sensitivity",
+      "bytes": 17533,
+      "media_type": "application/pdf",
+      "sha256": "1381731bc05d8efd2b51f6392ab9d81e6e5d3efb163886bbecd7f1a4d3c909a1",
+      "source_id": "release_assets/target_sensitivity.pdf"
+    },
+    {
+      "asset_group": "target_sensitivity",
+      "bytes": 27321,
+      "media_type": "image/svg+xml",
+      "sha256": "b4d153956f7ec47482d16e8e4beab7c57bbd2b83a98f84b2b237f8a2a456bc31",
+      "source_id": "release_assets/target_sensitivity.svg"
+    },
+    {
+      "asset_group": "target_sensitivity",
+      "bytes": 207,
+      "media_type": "application/x-tex",
+      "sha256": "f27a89db2d10e41165623a870a52ea237e232e86598640310d376eebd9285488",
+      "source_id": "release_assets/target_sensitivity.tex"
+    },
+    {
+      "asset_group": "topology_instances_and_diagnostics",
+      "bytes": 84,
+      "media_type": "text/csv",
+      "sha256": "ea23aa77f5f5a7d272ee4b3a27b25778ff7b037b3dc3fe145a7c25ff7c180232",
+      "source_id": "release_assets/topology_instances_and_diagnostics.csv"
+    },
+    {
+      "asset_group": "topology_instances_and_diagnostics",
+      "bytes": 17702,
+      "media_type": "application/pdf",
+      "sha256": "a2b1afd55001eefb06de89604ad183c317655c05614018b6d1fde02be2034de3",
+      "source_id": "release_assets/topology_instances_and_diagnostics.pdf"
+    },
+    {
+      "asset_group": "topology_instances_and_diagnostics",
+      "bytes": 28747,
+      "media_type": "image/svg+xml",
+      "sha256": "1c957eb45c7f6758b8e6a7e99fc54a1cee805b33d2a560a7cb0ed9acc8e9db2d",
+      "source_id": "release_assets/topology_instances_and_diagnostics.svg"
+    },
+    {
+      "asset_group": "topology_instances_and_diagnostics",
+      "bytes": 223,
+      "media_type": "application/x-tex",
+      "sha256": "698ed2cccde11c18325f07b02cf0b4efaf7398c45426a0e60530368ad1527754",
+      "source_id": "release_assets/topology_instances_and_diagnostics.tex"
+    },
+    {
+      "asset_group": "canonical_released_results_include",
+      "bytes": 3192,
+      "media_type": "application/x-tex",
+      "sha256": "a3989d457e4e11bfd7e75c9e6bc8f8aca8b865d524f7adf664ad0cef4b4c6bb4",
+      "source_id": "released_results_include.tex"
+    }
+  ],
+  "entries_hash": "d9efb93f9b83d0d9180fdf8dc231aa03859de6f7222b349ef50ea949d263cb26",
+  "manifest_sha256": "30c6049231f1bde3f889df7586febf393849cf2cb45c034a4bcd021bf0dee329",
+  "mode": "author-review",
+  "required_asset_groups": [
+    "primary_summary_and_forest",
+    "paired_condition_distribution",
+    "fraction_improved_interval",
+    "target_sensitivity",
+    "topology_instances_and_diagnostics",
+    "scale_native_and_common200",
+    "propagation",
+    "representativeness_and_conditional",
+    "secondary_ranking_and_multiplicity",
+    "baseline_absolute_skill",
+    "compute_and_failure_denominators",
+    "external_diagnostics_and_exclusions"
+  ],
+  "schema_version": "1.0",
+  "semantic_records_hashes": {
+    "baseline_absolute_skill": "7b0dd7d5e7fa4bab259de11cf1bd3121cad02893bb2c5afdbcadc1bbd9fc2dbc",
+    "compute_and_failure_denominators": "5e4b686b3b1a13761018f6503a28bb09c88d90fc87d7572fb1e159182fdeb23f",
+    "external_diagnostics_and_exclusions": "2c1473067b86824daf438b1255a4e18e4a044cf334a06272da29e71347e24c14",
+    "fraction_improved_interval": "efc03351fb924ea50dc3f8fca8cabb075b0db16ccd84d6f99e59aeddd1aa3e79",
+    "paired_condition_distribution": "7950e97952e1bba3680eb8ad0113a867d024b1a2855f59613e2406a142c15c01",
+    "primary_summary_and_forest": "c622848910e9990b1452ca86429c1233a315bdb24ced36069911d12a403e78c1",
+    "propagation": "e846d17d1b2730a711334a26df7260c04648e0b103843422057005ab89b8f5d6",
+    "representativeness_and_conditional": "0961ff8493344aab4e5827c9322cb4d883a1d97591803159325df642f4e65661",
+    "scale_native_and_common200": "bd9a0a734d62b6f5eddc86b842769b7b46aec257baa2c9b4cc4b2cf69400e8a9",
+    "secondary_ranking_and_multiplicity": "ea746bbedeb2309d733fa757e906fb6523124d3ff1e921df8ba30d1dcae554e6",
+    "target_sensitivity": "a5bb19c45e66936360672cf2ca4a9f1d286bcad6db52cc282cec352eef725d9f",
+    "topology_instances_and_diagnostics": "8a3200050b744c7f251912b110759a8bbcceddad430c9a79fc2aad32fd0d0fe1"
+  },
+  "source_bindings": {},
+  "source_bindings_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "status": "AUTHOR_REVIEW_PLACEHOLDERS"
+}

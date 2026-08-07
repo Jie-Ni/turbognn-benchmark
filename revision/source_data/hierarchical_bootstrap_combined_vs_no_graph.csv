@@ -1,0 +1,4 @@
+hvg,estimand,n_datasets,n_conditions,estimate,ci95_low,ci95_high,probability_delta_gt_0,probability_delta_gt_0_01
+200,equal-weight dataset-stratified mean condition-level delta_r,4,200,0.0013199222677697737,-0.0027211351037840356,0.005420943655830341,0.73775,0.0
+500,equal-weight dataset-stratified mean condition-level delta_r,4,200,-0.002099742229717473,-0.009979822488579279,0.003891988741621988,0.29955,0.0
+1000,equal-weight dataset-stratified mean condition-level delta_r,4,200,0.004855021689242373,0.0020958603761003667,0.0076374766977775526,0.99985,0.0

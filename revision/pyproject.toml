@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cbac-revision"
+version = "0.1.0"
+description = "Auditable, leakage-safe analysis components for the CBAC major revision"
+requires-python = ">=3.10"
+dependencies = [
+    "networkx>=3.2",
+    "h5py>=3.10",
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "psutil>=5.9",
+    "PyYAML>=6.0",
+    "scipy>=1.11",
+    "seaborn>=0.13",
+]
+
+[project.optional-dependencies]
+model = ["torch>=2.1", "torch-geometric>=2.5"]
+h5ad = ["anndata>=0.10"]
+test = ["pytest>=8.0"]
+
+[tool.setuptools]
+packages = ["cbac_revision"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["."]
+testpaths = ["tests"]
