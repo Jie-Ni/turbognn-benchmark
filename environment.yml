@@ -1,0 +1,25 @@
+name: cbac-benchmark
+channels:
+  - pytorch
+  - pyg
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch>=2.0.0
+  - torchvision
+  - torchaudio
+  - pyg>=2.3.0
+  - numpy>=1.24.0
+  - scipy>=1.10.0
+  - pandas>=2.0.0
+  - scikit-learn>=1.2.0
+  - networkx>=3.0
+  - pyyaml>=6.0
+  - tqdm
+  - pip
+  - pip:
+    - scanpy>=1.9.3
+    - anndata>=0.9.1
+    - matplotlib>=3.7.0
+    - seaborn>=0.12.0
